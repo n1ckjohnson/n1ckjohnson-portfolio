@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #ffffff;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+::selection {
+  background: rgba(23, 23, 23, 0.12);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-[-0.03em];
+  }
+
+  p {
+    @apply leading-7 text-muted;
+  }
+
+  a,
+  button {
+    @apply transition duration-300 ease-out;
+  }
+
+  body {
+    @apply bg-canvas;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-[96rem] px-4 sm:px-5 lg:px-6;
+  }
+
+  .fade-in {
+    @apply translate-y-6 opacity-0 transition-all duration-700 ease-out;
+  }
+
+  .fade-in.is-visible {
+    @apply translate-y-0 opacity-100;
+  }
+
+  .reveal {
+    @apply translate-y-2 opacity-0 transition-all duration-500 ease-out;
+  }
+
+  .reveal.is-visible {
+    @apply translate-y-0 opacity-100;
+  }
+
+  .reveal-x {
+    opacity: 0;
+    transform: translateX(-14px);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+  }
+
+  .reveal-x.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-x {
+    transition: opacity 200ms ease-out;
+    transform: none !important;
+  }
+  .reveal.is-visible,
+  .reveal-x.is-visible {
+    opacity: 1;
+    transform: none !important;
+  }
+}

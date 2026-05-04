@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "/usr/local/bin/node",
+      "runtimeArgs": ["/Users/njohnson/Downloads/N1/N1CKJOHNSON-PORTFOLIO/node_modules/.bin/next", "dev", "--webpack"],
+      "port": 3000
+    }
+  ]
+}
