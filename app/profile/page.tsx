@@ -1,7 +1,6 @@
 import { existsSync } from "fs";
 import { join } from "path";
 import { experience, education, contact } from "@/content/profile";
-import { ScrollLock } from "@/components/scroll-lock";
 
 function detectProfileSrc(): string | null {
   for (const ext of ["jpg", "jpeg", "png", "webp"]) {
@@ -16,8 +15,9 @@ export default function ProfilePage() {
 
   return (
     <>
-      <ScrollLock />
-      <div className="flex h-[100svh] w-full overflow-hidden bg-white px-4 sm:px-5 lg:px-6">
+      {/* Lock document scroll at desktop only — CSS only, no JS, removed on navigation */}
+      <style>{`@media (min-width: 1024px) { html { overflow: hidden } }`}</style>
+      <div className="flex min-h-screen w-full overflow-y-auto bg-white px-4 sm:px-5 lg:min-h-0 lg:h-[100svh] lg:overflow-hidden lg:px-6">
         <section className="flex flex-1 items-center justify-center py-16 sm:py-20">
           <div className="grid w-full max-w-[84rem] gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_minmax(14rem,0.65fr)] lg:items-start lg:gap-12">
 
