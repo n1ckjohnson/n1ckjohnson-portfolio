@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV === "development";
+
 const securityHeaders = [
   {
     key: "X-Content-Type-Options",
@@ -23,13 +25,13 @@ const securityHeaders = [
     // - data: for inline SVGs and base64 images
     // - blob: for Next.js image optimization worker
     // - unsafe-inline for Next.js inline styles/scripts
-    // - unsafe-eval disabled (Next.js does not require it in production)
+    // - unsafe-eval only in dev (Next.js dev server uses eval-source-map bundles)
     // - connect-src self for Next.js prefetch/analytics
     // - frame-ancestors 'none' enforced here too (belt + suspenders with X-Frame-Options)
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      isDev ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'" : "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob:",
