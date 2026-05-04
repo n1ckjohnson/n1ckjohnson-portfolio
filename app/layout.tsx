@@ -14,8 +14,18 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Nick Johnson",
-  description:
-    "Personal portfolio for Nick Johnson featuring selected systems, visual design work, and profile details."
+  description: "Designer for the Jacksonville Jaguars",
+  openGraph: {
+    title: "Nick Johnson",
+    description: "Designer for the Jacksonville Jaguars",
+    images: [{ url: "/og-image.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nick Johnson",
+    description: "Designer for the Jacksonville Jaguars",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
