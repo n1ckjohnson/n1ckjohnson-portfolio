@@ -213,6 +213,34 @@ export const projects: Project[] = [
     symbol: ""
   },
   {
+    slug: "stadium-of-the-future-deposit-campaign",
+    type: "CAMPAIGN SYSTEM",
+    title: "Stadium of the Future Deposit Campaign",
+    summary:
+      "Led creative direction for a multi-channel campaign promoting deposits for Stadium of the Future, using a unified visual system to connect current team identity with future stadium development.",
+    role: "Creative Direction",
+    collaborators: "Design, Marketing, Digital, Ticketing",
+    channels: "Email, Social, Jaguars.com, App, In-Stadium",
+    opening:
+      "The campaign needed to generate early commitment for Stadium of the Future while clearly communicating a forward-looking vision for the franchise across multiple touchpoints.",
+    decisions: [
+      "Introduced gradient mapping as a core visual system to unify campaign assets",
+      "Applied the radial jag element to reinforce brand identity within a future-focused context",
+      "Combined player imagery with Stadium of the Future renderings to connect present and future",
+      "Designed a consistent visual language that scaled across all campaign touchpoints",
+      "Balanced bold visual direction with clear deposit-driven messaging"
+    ],
+    flow: "Campaign Vision → Multi-Channel Rollout → Deposit Action",
+    outcome: [
+      "Delivered a cohesive, high-visibility campaign across digital, physical, and environmental touchpoints.",
+      "Established an early use case for gradient mapping within the broader brand system.",
+      "Reinforced franchise positioning around future development and long-term growth."
+    ],
+    heroImage: "",
+    supportingImages: [],
+    symbol: ""
+  },
+  {
     slug: "small-market-team",
     type: "CAMPAIGN SYSTEM",
     title: "2025 Playoffs",
