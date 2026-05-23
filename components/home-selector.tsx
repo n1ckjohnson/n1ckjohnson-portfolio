@@ -126,14 +126,14 @@ export function HomeSelector({ projects, thumbMap, logoSrc }: HomeSelectorProps)
         </div>
 
         {/* Name label — static brackets, swappable inner text */}
-        <div className="group/name inline-flex items-center font-brand text-[10px] uppercase tracking-[0.14em] text-[#141414] sm:text-[11px]">
+        <div className="group/name inline-flex items-center font-brand text-[10px] uppercase tracking-[0.14em] text-[#141414] sm:text-[11px]" data-nosnippet>
           <span>[</span>
           <span className="relative mx-[0.5em]">
-            <span className="invisible whitespace-nowrap">NICK JOHNSON</span>
+            <span className="invisible whitespace-nowrap" aria-hidden="true">NICK JOHNSON</span>
             <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap transition-opacity duration-150 ease-linear group-hover/name:opacity-0">
               NICK JOHNSON
             </span>
-            <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap opacity-0 transition-opacity duration-150 ease-linear group-hover/name:opacity-100">
+            <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap opacity-0 transition-opacity duration-150 ease-linear group-hover/name:opacity-100" aria-hidden="true">
               N1CKJOHNSON
             </span>
           </span>
