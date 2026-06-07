@@ -129,14 +129,14 @@ export function FlowReveal({ flow }: FlowRevealProps) {
   });
 
   return (
-    <section ref={sectionRef} className="mt-20" aria-label="System flow">
+    <section ref={sectionRef} className="mt-12 sm:mt-14 lg:mt-16" aria-label="System flow">
       <p className="mb-6 font-brand text-[10px] uppercase tracking-[0.14em] text-[#6B6B6B] sm:text-[11px]">
         Flow
       </p>
       <div
         role="img"
         aria-label={`Flow: ${flow}`}
-        className="border-t border-b border-[#E8E6E2] py-10 sm:py-12"
+        className="border-t border-b border-[#E8E6E2] py-8 sm:py-10"
       >
         <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
           {items}

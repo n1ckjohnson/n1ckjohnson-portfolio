@@ -252,9 +252,9 @@ export function SupportMedia({
 
   return (
     <>
-      <div className="mt-20">
+      <div className="mt-12 sm:mt-14 lg:mt-16">
         {groups && groups.length > 0 ? (
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-10">
             {groups.map((group) => (
               <div key={group.label}>
                 <p className="mb-6 font-brand text-[10px] uppercase tracking-[0.14em] text-[#6B6B6B] sm:text-[11px]">

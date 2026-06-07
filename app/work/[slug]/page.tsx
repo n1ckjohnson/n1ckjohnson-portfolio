@@ -148,7 +148,7 @@ export default async function WorkPage({
       <div className="relative z-10 w-full bg-white">
 
         {/* ── Part 1: Header + Opening ────────────────────────── */}
-        <div className="mx-auto w-full max-w-[72rem] px-5 pb-14 pt-14 sm:px-6 sm:pt-16 lg:px-8 lg:pt-20">
+        <div className="mx-auto w-full max-w-[72rem] px-5 pb-10 pt-14 sm:pb-12 sm:px-6 sm:pt-16 lg:px-8 lg:pt-20">
           <header>
             <p className="font-brand text-[10px] uppercase tracking-[0.14em] text-[#6B6B6B] sm:text-[11px]">
               [ {project.type} ]
@@ -159,7 +159,7 @@ export default async function WorkPage({
             <p className="mt-6 max-w-[42rem] font-sans text-[1rem] leading-[1.6] tracking-[-0.01em] text-[#444444]">
               {project.summary}
             </p>
-            <div className="mt-10 border-t border-[#E8E6E2] pt-7 lg:mt-12 lg:pt-8">
+            <div className="mt-7 border-t border-[#E8E6E2] pt-7 sm:mt-8 lg:mt-10 lg:pt-8">
               <p className="font-brand text-[10px] uppercase tracking-[0.14em] text-[#6B6B6B] sm:text-[11px]">
                 <span className="text-[#A0A09A]">Collaborators</span>
                 <span className="mx-3 text-[#E8E6E2]">·</span>
@@ -169,7 +169,7 @@ export default async function WorkPage({
           </header>
 
           <ScrollReveal>
-            <section className="mt-20" aria-label="Opening">
+            <section className="mt-12 sm:mt-14 lg:mt-16" aria-label="Opening">
               <div className="max-w-[42rem] space-y-4">
                 {openingParagraphs.map((paragraph) => (
                   <p
@@ -289,9 +289,9 @@ export default async function WorkPage({
         )}
 
         {/* ── Part 2: Decisions → Outcome ─────────────────────── */}
-        <div className="mx-auto w-full max-w-[72rem] px-5 pb-28 sm:px-6 sm:pb-32 lg:px-8 lg:pb-40">
+        <div className="mx-auto w-full max-w-[72rem] px-5 pb-20 sm:px-6 sm:pb-24 lg:px-8 lg:pb-28">
 
-          <section className="mt-20" aria-label="Decisions">
+          <section className="mt-12 sm:mt-14 lg:mt-16" aria-label="Decisions">
             <p className="mb-6 font-brand text-[10px] uppercase tracking-[0.14em] text-[#6B6B6B] sm:text-[11px]">
               Decisions
             </p>
@@ -299,7 +299,7 @@ export default async function WorkPage({
               {project.decisions.map((decision, index) => (
                 <li
                   key={decision}
-                  className="flex items-start gap-8 border-t border-[#E8E6E2] py-6 last:border-b sm:gap-10 sm:py-8"
+                  className="flex items-start gap-8 border-t border-[#E8E6E2] py-4 last:border-b sm:gap-10 sm:py-6"
                 >
                   <span className="min-w-[2.5rem] pt-[0.1rem] font-brand text-[1.1rem] font-light tabular-nums leading-none text-[#C8C5C0] sm:text-[1.25rem]">
                     {String(index + 1).padStart(2, "0")}
@@ -315,7 +315,7 @@ export default async function WorkPage({
           <FlowReveal flow={project.flow} />
 
           <ScrollReveal>
-            <section className="mt-20" aria-label="Outcome">
+            <section className="mt-12 sm:mt-14 lg:mt-16" aria-label="Outcome">
               <p className="mb-6 font-brand text-[10px] uppercase tracking-[0.14em] text-[#6B6B6B] sm:text-[11px]">
                 Outcome
               </p>
@@ -430,7 +430,7 @@ export default async function WorkPage({
                 <ImageSlot aspect="aspect-[21/9]" sizes="100vw" />
               )}
             </ScrollReveal>
-            <div className="pb-28 sm:pb-32 lg:pb-40" />
+            <div className="pb-20 sm:pb-24 lg:pb-28" />
           </>
         )}
 
@@ -454,7 +454,7 @@ export default async function WorkPage({
                 <ImageSlot aspect="aspect-[21/9]" sizes="100vw" />
               )}
             </ScrollReveal>
-            <div className="pb-28 sm:pb-32 lg:pb-40" />
+            <div className="pb-20 sm:pb-24 lg:pb-28" />
           </>
         )}
 
@@ -478,7 +478,7 @@ export default async function WorkPage({
             ) : (
               <ImageSlot aspect="aspect-[21/9]" sizes="100vw" />
             )}
-            <div className="pb-28 sm:pb-32 lg:pb-40" />
+            <div className="pb-20 sm:pb-24 lg:pb-28" />
           </>
         )}
 
