@@ -2,88 +2,282 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Tokens ─────────────────────────────────────────────────────────── */
+
 :root {
   color-scheme: light;
+
+  --canvas: #fcfcfb;
+  --surface: #f2f2f0;
+  --ink: #111110;
+  --ink-2: #62615c;
+  --ink-3: #8f8e88;
+  --line: rgba(17, 17, 16, 0.08);
+  --line-strong: rgba(17, 17, 16, 0.16);
+
+  --gutter: 1.25rem;
+
+  /* Motion — one curve family, four durations */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-press: 120ms;
+  --dur-quick: 200ms;
+  --dur-base: 360ms;
+  --dur-slow: 640ms;
 }
 
-html {
-  scroll-behavior: smooth;
-  background-color: #ffffff;
-}
-
-body {
-  min-height: 100vh;
-  background-color: #ffffff;
-}
-
-::selection {
-  background: rgba(23, 23, 23, 0.12);
-}
-
-@layer base {
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply tracking-[-0.03em];
-  }
-
-  p {
-    @apply leading-7 text-muted;
-  }
-
-  a,
-  button {
-    @apply transition duration-300 ease-out;
-  }
-
-  body {
-    @apply bg-canvas;
+@media (min-width: 640px) {
+  :root {
+    --gutter: 2rem;
   }
 }
 
-@layer components {
-  .shell {
-    @apply mx-auto w-full max-w-[96rem] px-4 sm:px-5 lg:px-6;
-  }
-
-  .fade-in {
-    @apply translate-y-6 opacity-0 transition-all duration-700 ease-out;
-  }
-
-  .fade-in.is-visible {
-    @apply translate-y-0 opacity-100;
-  }
-
-  .reveal {
-    @apply translate-y-2 opacity-0 transition-all duration-500 ease-out;
-  }
-
-  .reveal.is-visible {
-    @apply translate-y-0 opacity-100;
-  }
-
-  .reveal-x {
-    opacity: 0;
-    transform: translateX(-14px);
-    transition: opacity 500ms ease-out, transform 500ms ease-out;
-  }
-
-  .reveal-x.is-visible {
-    opacity: 1;
-    transform: translateX(0);
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 3rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal-x {
-    transition: opacity 200ms ease-out;
-    transform: none !important;
+  :root {
+    --dur-quick: 1ms;
+    --dur-base: 1ms;
+    --dur-slow: 1ms;
   }
-  .reveal.is-visible,
-  .reveal-x.is-visible {
+}
+
+/* ── Base ───────────────────────────────────────────────────────────── */
+
+@layer base {
+  html {
+    background-color: var(--canvas);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background: rgba(17, 17, 16, 0.1);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .page {
+    @apply mx-auto w-full max-w-page px-gutter;
+  }
+
+  /* Inline text link: quiet underline that firms up on hover */
+  .text-link {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    text-decoration-color: var(--line-strong);
+    transition: text-decoration-color var(--dur-quick) var(--ease-out), color var(--dur-quick) var(--ease-out);
+  }
+
+  .text-link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /*
+   * Index lists: when one row is hovered or keyboard-focused, its siblings
+   * recede. Pure CSS, so it costs nothing until someone interacts.
+   */
+  .index-row {
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+
+  @media (hover: hover) {
+    .index:has(.index-row:hover) .index-row:not(:hover) {
+      opacity: 0.38;
+    }
+  }
+
+  .index:has(.index-row:focus-visible) .index-row:not(:focus-visible) {
+    opacity: 0.38;
+  }
+
+  /* The arrow nudges forward on hover/focus; never carries meaning alone */
+  .index-arrow {
+    transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out);
+  }
+
+  .index-row:hover .index-arrow,
+  .index-row:focus-visible .index-arrow {
+    transform: translateX(3px);
     opacity: 1;
-    transform: none !important;
+  }
+
+  /*
+   * Media reveal: images fade up once decoded. Only applies when JS is
+   * running (html.js), so content is never hidden without it.
+   */
+  .js .media-reveal {
+    opacity: 0;
+    transform: scale(1.012);
+    transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+  }
+
+  .js .media-reveal[data-loaded="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Pressable controls: a short, shallow press */
+  .pressable {
+    transition: transform var(--dur-press) var(--ease-out), opacity var(--dur-quick) var(--ease-out),
+      color var(--dur-quick) var(--ease-out), background-color var(--dur-quick) var(--ease-out);
+  }
+
+  .pressable:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ── Scrubber (range input) ─────────────────────────────────────────── */
+
+.scrubber {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.scrubber:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.scrubber::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--ink) var(--progress, 0%), var(--line-strong) var(--progress, 0%));
+}
+
+.scrubber::-moz-range-track {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+
+.scrubber::-moz-range-progress {
+  height: 2px;
+  background: var(--ink);
+}
+
+.scrubber::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 3px var(--surface);
+  transition: transform var(--dur-press) var(--ease-out);
+}
+
+.scrubber::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.scrubber:active::-webkit-slider-thumb {
+  transform: scale(1.25);
+}
+
+.scrubber:focus-visible {
+  outline-offset: 4px;
+}
+
+/* ── Lightbox ───────────────────────────────────────────────────────── */
+
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+.lightbox::backdrop {
+  background: transparent;
+}
+
+.lightbox[open] {
+  animation: fade-in var(--dur-quick) var(--ease-out);
+}
+
+.lightbox[data-state="closing"] {
+  animation: fade-out 180ms var(--ease-out) forwards;
+}
+
+.lightbox-image {
+  animation: media-in var(--dur-base) var(--ease-out);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes media-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-image {
+    animation: none;
+  }
+
+  .js .media-reveal {
+    transform: none;
+  }
+
+  .pressable:active {
+    transform: none;
   }
 }

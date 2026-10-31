@@ -32,6 +32,8 @@ export type Project = {
   optionalPhoneImages?: string[];
   optionalSystemDiagram?: string;
   symbol: string;
+  /** Archived projects keep their data but have no public listing or route. */
+  status?: "archived";
 };
 
 export const projects: Project[] = [
@@ -386,7 +388,8 @@ export const projects: Project[] = [
     ],
     heroImage: "",
     supportingImages: [],
-    symbol: ""
+    symbol: "",
+    status: "archived"
   }
 ];
 

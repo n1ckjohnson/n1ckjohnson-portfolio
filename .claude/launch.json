@@ -2,10 +2,28 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "portfolio",
+      "name": "redesign",
       "runtimeExecutable": "/usr/local/bin/node",
-      "runtimeArgs": ["/Users/njohnson/Downloads/N1/N1CKJOHNSON-PORTFOLIO/node_modules/.bin/next", "dev", "--webpack"],
+      "runtimeArgs": [
+        "/Users/njohnson/Downloads/02_PERSONAL_PROJECTS/N1/N1CKJOHNSON-REDESIGN/node_modules/.bin/next",
+        "dev",
+        "/Users/njohnson/Downloads/02_PERSONAL_PROJECTS/N1/N1CKJOHNSON-REDESIGN",
+        "--port",
+        "3000"
+      ],
       "port": 3000
+    },
+    {
+      "name": "redesign-production",
+      "runtimeExecutable": "/usr/local/bin/node",
+      "runtimeArgs": [
+        "/Users/njohnson/Downloads/02_PERSONAL_PROJECTS/N1/N1CKJOHNSON-REDESIGN/node_modules/.bin/next",
+        "start",
+        "/Users/njohnson/Downloads/02_PERSONAL_PROJECTS/N1/N1CKJOHNSON-REDESIGN",
+        "--port",
+        "3001"
+      ],
+      "port": 3001
     }
   ]
 }
