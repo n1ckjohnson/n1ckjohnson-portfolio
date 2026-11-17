@@ -1,0 +1,80 @@
+import type { Project } from "@/content/creative-technology/types";
+
+export type TargetedDemo = {
+  tools: {
+    key: string;
+    name: string;
+    what: string;
+    method: string;
+    /** Optional artefact shown beside the row in builds that may show it. */
+    artefact?: string;
+    artefactCaption?: string;
+  }[];
+  /** Named by the owner; no local artefact is shown for these. */
+  alsoApplied: string[];
+};
+
+export const targetedAutomation: Project<TargetedDemo> = {
+  id: "targeted-automation",
+  slug: "targeted-automation",
+  order: 11,
+  title: "Targeted automation",
+  kind: "Focused scripts",
+  blurb: "Small scripts for specific production needs.",
+  year: "2026",
+  summary:
+    "The same engineering approach, applied to smaller production needs. Not every repetitive task needs a standalone application. Some are better served by a focused script and a well-structured workflow.",
+  line: "Smaller scripts I wrote to take one repetitive step out of a specific project.",
+  status: "built",
+  stack: ["Photoshop scripting", "Structured data", "AI-assisted batch workflows", "Automated versioning and export"],
+  automated: ["Repetitive versioning steps inside a single project", "Export and naming", "Checks that the change landed everywhere it should"],
+  designerControlled: ["The creative", "Scope: what is worth scripting and what is not", "Review of every output"],
+  detail: [
+    "These are deliberately small. Each one removes a specific repetitive step from a real project and stops there.",
+    "They share the habits of the larger systems: a protected master, changes made by script rather than by hand across many files, and a check that every file was actually updated.",
+  ],
+  facts: [
+    { text: "Each tool was built for a specific project and is described only as far as local evidence supports.", basis: "evidence" },
+    { text: "Roster graphics and newsletter production are named by the owner; no artefact for them is shown here.", basis: "brief" },
+    { text: "The private-event suite produced 18 deliverables from one sample PSD.", basis: "evidence", tier: "internal" },
+    { text: "The award suite's copy change was applied by script across nine PSDs, with every check passing.", basis: "evidence", tier: "internal" },
+  ],
+  mediaPrefix: "targeted/",
+  interaction: "targeted-automation",
+  demo: {
+    tools: [
+      {
+        key: "suite",
+        name: "Creative-suite versioning",
+        what: "One locked master derived into every channel format, then updated in one pass when the copy changed.",
+        method: "Scripted derivation and copy change across the suite",
+        artefact: "targeted/award-32x9",
+        artefactCaption: "32:9 format from an award campaign suite",
+      },
+      {
+        key: "uk-email",
+        name: "UK email adaptation",
+        what: "A UK version of the postgame email that swaps only the next-game module and uses UK date formats.",
+        method: "Scripted variant of an existing master",
+        artefact: "targeted/uk-email",
+        artefactCaption: "UK audience email",
+      },
+      {
+        key: "white-uniform",
+        name: "White uniform correction",
+        what: "The Rivalries color method applied to the white uniform: automatic masks for jersey, pants and socks, then a tone pass the designer approves.",
+        method: "Mask, build, calibrate, verify, report",
+        artefact: "targeted/uniform-color-before-after",
+        artefactCaption: "Before and after, from the pipeline's QA report",
+      },
+      {
+        key: "roster",
+        name: "53-man roster graphics",
+        what: "Roster graphics produced by script for the roster announcement. Built for that run, not as a reusable plug-in.",
+        method: "Scripted Photoshop production",
+      },
+    ],
+    alsoApplied: ["Newsletter production", "Export workflows"],
+  },
+  publication: { copy: "approved", note: "Only tools with local evidence are described in detail." },
+};

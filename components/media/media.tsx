@@ -15,7 +15,7 @@ type MediaProps = {
  * Renders any project media at its intrinsic aspect ratio: optimized
  * images, animated GIFs (served as-is) and muted inline video.
  */
-export function Media({ item, alt, sizes = "(min-width: 1280px) 1200px, 100vw", priority, className }: MediaProps) {
+export function Media({ item, alt, sizes = "(min-width: 1008px) 960px, 100vw", priority, className }: MediaProps) {
   if (item.kind === "video") {
     return <InlineVideo src={item.src} width={item.width} height={item.height} label={alt} className={className} />;
   }

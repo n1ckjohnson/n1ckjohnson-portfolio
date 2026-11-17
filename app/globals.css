@@ -2,22 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * One editorial system for the whole site.
+ *
+ * A narrow reading column and one type size for almost everything. Media
+ * sits on a stage that is exactly as wide as the text. The page stays white;
+ * real work supplies the colour. See docs/site/README.md.
+ */
+
 /* ── Tokens ─────────────────────────────────────────────────────────── */
 
 :root {
   color-scheme: light;
 
-  --canvas: #fcfcfb;
-  --surface: #f2f2f0;
-  --ink: #111110;
-  --ink-2: #62615c;
-  --ink-3: #8f8e88;
-  --line: rgba(17, 17, 16, 0.08);
-  --line-strong: rgba(17, 17, 16, 0.16);
+  --bg: #ffffff;
+  --surface: #f5f5f5;
+  --ink: #121212;
+  /* Secondary text. 5.3:1 on white, so it can carry real information. */
+  --ink-2: #6b6b6b;
+  /* Marks and rules only. Never the sole carrier of meaning. */
+  --ink-3: #a3a3a3;
+  --line: rgba(18, 18, 18, 0.08);
+  --line-strong: rgba(18, 18, 18, 0.2);
+  /* Jaguars teal. Reserved for focus rings. */
+  --accent: #006778;
+  /* Selected text: a neutral grey, never a colour. */
+  --selection: #e5e5e5;
 
-  --gutter: 1.25rem;
+  /*
+   * One alignment system. Text and media share the same left and right
+   * edges: a stage is exactly as wide as the reading column, on every screen.
+   */
+  --measure: 36.25rem;
+  --stage: var(--measure);
+  --gutter: 1.5rem;
+  --stage-gutter: var(--gutter);
 
-  /* Motion — one curve family, four durations */
+  --mono: var(--font-mono), ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  --radius: 12px;
+  --radius-s: 6px;
+
+  /* Motion: one curve family, four durations. */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-press: 120ms;
@@ -26,20 +52,9 @@
   --dur-slow: 640ms;
 }
 
-@media (min-width: 640px) {
-  :root {
-    --gutter: 2rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  :root {
-    --gutter: 3rem;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   :root {
+    --dur-press: 1ms;
     --dur-quick: 1ms;
     --dur-base: 1ms;
     --dur-slow: 1ms;
@@ -50,167 +65,653 @@
 
 @layer base {
   html {
-    background-color: var(--canvas);
+    background-color: var(--bg);
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
   }
 
   body {
     min-height: 100vh;
-    background-color: var(--canvas);
+    min-height: 100svh;
+    background-color: var(--bg);
     color: var(--ink);
+    /* A touch above regular: on white at this size, Inter reads closer to system text. */
+    font-weight: 430;
     font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
   }
 
   ::selection {
-    background: rgba(17, 17, 16, 0.1);
+    background: var(--selection);
+    color: var(--ink);
+    text-shadow: none;
+  }
+
+  /* Firefox before 62 only understands the prefixed form. */
+  ::-moz-selection {
+    background: var(--selection);
+    color: var(--ink);
+    text-shadow: none;
   }
 
   :focus-visible {
-    outline: 2px solid var(--ink);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
   img,
   video {
     max-width: 100%;
   }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 540;
+  }
 }
 
+/* ── Layout ─────────────────────────────────────────────────────────── */
+
 @layer components {
-  .page {
-    @apply mx-auto w-full max-w-page px-gutter;
+  /* The reading column. Everything textual lives here. */
+  .col {
+    margin-inline: auto;
+    width: 100%;
+    max-width: calc(var(--measure) + var(--gutter) * 2);
+    padding-inline: var(--gutter);
   }
 
-  /* Inline text link: quiet underline that firms up on hover */
-  .text-link {
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.22em;
-    text-decoration-color: var(--line-strong);
-    transition: text-decoration-color var(--dur-quick) var(--ease-out), color var(--dur-quick) var(--ease-out);
+  /* The media stage: the same box as the column, kept as its own name for media. */
+  .wide {
+    margin-inline: auto;
+    width: 100%;
+    max-width: calc(var(--stage) + var(--stage-gutter) * 2);
+    padding-inline: var(--stage-gutter);
   }
 
-  .text-link:hover {
-    text-decoration-color: currentColor;
+  /* Vertical rhythm between the sections of a page. */
+  .spaced {
+    margin-top: 3.5rem;
   }
 
-  /*
-   * Index lists: when one row is hovered or keyboard-focused, its siblings
-   * recede. Pure CSS, so it costs nothing until someone interacts.
-   */
-  .index-row {
-    transition: opacity var(--dur-base) var(--ease-out);
-  }
-
-  @media (hover: hover) {
-    .index:has(.index-row:hover) .index-row:not(:hover) {
-      opacity: 0.38;
+  @media (min-width: 640px) {
+    .spaced {
+      margin-top: 4.5rem;
     }
   }
 
-  .index:has(.index-row:focus-visible) .index-row:not(:focus-visible) {
-    opacity: 0.38;
+  /* ── Text ─────────────────────────────────────────────────────────── */
+
+  /* Inline link: a quiet underline that firms up on hover. */
+  .link {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: var(--line-strong);
+    transition: text-decoration-color var(--dur-quick) var(--ease-out);
   }
 
-  /* The arrow nudges forward on hover/focus; never carries meaning alone */
-  .index-arrow {
-    transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out);
+  .link:hover {
+    text-decoration-color: currentColor;
   }
 
-  .index-row:hover .index-arrow,
-  .index-row:focus-visible .index-arrow {
-    transform: translateX(3px);
-    opacity: 1;
+  /* A run of paragraphs. */
+  .prose > * + * {
+    margin-top: 1rem;
+  }
+
+  /* The small grey label that names a section. */
+  .label {
+    color: var(--ink-2);
+    font-weight: inherit;
+  }
+
+  /* ── Lists of links ───────────────────────────────────────────────── */
+
+  .rows {
+    border-top: 1px solid var(--line);
+  }
+
+  .row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.6875rem;
+    border-bottom: 1px solid var(--line);
+    outline-offset: -2px;
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+
+  .row__meta {
+    flex: none;
+    color: var(--ink-2);
+    text-align: right;
+  }
+
+  /* When one row has attention, its neighbours step back. Costs nothing idle. */
+  @media (hover: hover) {
+    .rows:has(.row:hover) .row:not(:hover) {
+      opacity: 0.45;
+    }
+  }
+
+  .rows:has(.row:focus-visible) .row:not(:focus-visible) {
+    opacity: 0.45;
+  }
+
+  /* A list of facts: a grey term on the left, its value on the right. */
+  .pairs {
+    border-top: 1px solid var(--line);
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 0.6875rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pair > dt {
+    color: var(--ink-2);
+  }
+
+  .pair > dd {
+    text-align: right;
+  }
+
+  /* ── Back link ────────────────────────────────────────────────────── */
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    /* Padding widens the target for a finger without moving the text. */
+    margin: -0.625rem -0.5rem -0.625rem -0.625rem;
+    padding: 0.625rem 0.5rem;
+    color: var(--ink-2);
+    transition: color var(--dur-quick) var(--ease-out);
+  }
+
+  .back:hover {
+    color: var(--ink);
+  }
+
+  .back svg {
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  .back:hover svg {
+    transform: translateX(-2px);
+  }
+
+  /* ── Page head ────────────────────────────────────────────────────── */
+
+  .page-head {
+    position: relative;
+    padding-top: 2.5rem;
+  }
+
+  /* On a phone the way back stacks above the title, in the column. */
+  .page-head__back {
+    margin-inline: auto;
+    width: 100%;
+    max-width: calc(var(--measure) + var(--gutter) * 2);
+    padding-inline: var(--gutter);
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .page-head {
+      padding-top: 5rem;
+    }
+  }
+
+  /* With room to spare it moves to the margin, level with the title. */
+  @media (min-width: 1120px) {
+    .page-head__back {
+      position: absolute;
+      top: 5rem;
+      left: 2.5rem;
+      width: auto;
+      max-width: none;
+      margin: 0;
+      padding: 0;
+      line-height: 1.625rem;
+    }
+  }
+
+  /* ── Media ────────────────────────────────────────────────────────── */
+
+  /* The off-white tile real work sits on. */
+  .stage {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .caption {
+    margin-top: 0.75rem;
+    color: var(--ink-2);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .caption strong {
+    color: var(--ink);
+    font-weight: 540;
+  }
+
+  /* A real export at its own proportions. */
+  .shot {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: var(--radius-s);
+    background: rgba(18, 18, 18, 0.04);
+  }
+
+  .shot > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* One slot that dissolves between exports of the same format. */
+  .swap {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: var(--radius-s);
+    background: rgba(18, 18, 18, 0.04);
+  }
+
+  .swap > img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swap > .swap__in {
+    animation: swap-in var(--dur-base) var(--ease-out) both;
+  }
+
+  /* Artwork that brings its own rounded, transparent corners. */
+  .swap--flat {
+    overflow: visible;
+    border-radius: 0;
+    background: none;
+    filter: drop-shadow(0 1px 1px rgba(18, 18, 18, 0.06)) drop-shadow(0 12px 18px rgba(18, 18, 18, 0.12));
+  }
+
+  @keyframes swap-in {
+    from {
+      opacity: 0;
+    }
   }
 
   /*
-   * Media reveal: images fade up once decoded. Only applies when JS is
-   * running (html.js), so content is never hidden without it.
+   * A stage of fixed height that fits one graphic inside it, whatever its
+   * proportions. Because the height never changes, switching between a tall
+   * and a wide export moves nothing else on the page; the fitted box itself
+   * eases from one shape to the other.
+   */
+  .plate {
+    height: var(--plate-h, clamp(22rem, 62svh, 30rem));
+    padding: 0.75rem;
+  }
+
+  /* Tall enough to show the work, short enough that its controls stay on screen. */
+  @media (min-width: 640px) {
+    .plate {
+      height: var(--plate-h-wide, clamp(26rem, 60svh, 34rem));
+      padding: 1.5rem;
+    }
+  }
+
+  .plate__area {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    container-type: size;
+  }
+
+  .plate__fit {
+    position: relative;
+    width: min(100cqw, calc(100cqh * var(--ar)));
+    height: min(100cqh, calc(100cqw / var(--ar)));
+    transition:
+      width var(--dur-slow) var(--ease-out),
+      height var(--dur-slow) var(--ease-out);
+  }
+
+  .plate__fit > .swap,
+  .plate__fit > .shot {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* A line of facts under a control row: label, then value. */
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1.25rem;
+    margin-top: 0.875rem;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+
+  .facts dt {
+    display: inline;
+    color: var(--ink-2);
+  }
+
+  .facts dd {
+    display: inline;
+    margin-left: 0.375rem;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Soft lift for creative that sits on the stage. */
+  .lift {
+    box-shadow:
+      0 0 0 0.5px rgba(18, 18, 18, 0.08),
+      0 1px 2px rgba(18, 18, 18, 0.05),
+      0 10px 28px -12px rgba(18, 18, 18, 0.22);
+  }
+
+  /* ── Controls ─────────────────────────────────────────────────────── */
+
+  /* The row of controls under a stage. */
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem 0.75rem;
+    margin-top: 1rem;
+  }
+
+  /* Segmented control, as on iOS: a track with one raised option. */
+  .seg {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    padding: 2px;
+    /* A pill while it fits on one row, a soft rectangle when it wraps to two. */
+    border-radius: 1.125rem;
+    background: rgba(18, 18, 18, 0.06);
+  }
+
+  .seg__item {
+    display: inline-grid;
+    place-items: center;
+    min-height: 2rem;
+    padding-inline: 0.75rem;
+    border-radius: 999px;
+    color: var(--ink-2);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    transition:
+      color var(--dur-quick) var(--ease-out),
+      background-color var(--dur-quick) var(--ease-out),
+      box-shadow var(--dur-quick) var(--ease-out),
+      transform var(--dur-press) var(--ease-out);
+  }
+
+  .seg__item:hover {
+    color: var(--ink);
+  }
+
+  .seg__item:active {
+    transform: scale(0.97);
+  }
+
+  /*
+   * The chosen option is a little heavier as well as darker, so the choice
+   * does not rest on colour alone. Its heavier width is reserved in advance
+   * by an invisible copy, so nothing shifts when the choice changes.
+   */
+  .seg__item > span,
+  .seg__item::after {
+    grid-area: 1 / 1;
+  }
+
+  .seg__item::after {
+    content: attr(data-label);
+    visibility: hidden;
+    font-weight: 540;
+  }
+
+  .seg__item[aria-checked="true"],
+  .seg__item[aria-pressed="true"] {
+    background: #fff;
+    color: var(--ink);
+    font-weight: 540;
+    box-shadow:
+      0 0 0 0.5px rgba(18, 18, 18, 0.06),
+      0 1px 2px rgba(18, 18, 18, 0.1);
+  }
+
+  .seg__item:disabled {
+    color: var(--ink-3);
+    cursor: default;
+  }
+
+  .seg__item:focus-visible {
+    outline-offset: 1px;
+    border-radius: 999px;
+  }
+
+  /* A lone button in the same voice, e.g. Replay. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 2.25rem;
+    padding-inline: 0.875rem;
+    border-radius: 999px;
+    background: rgba(18, 18, 18, 0.06);
+    color: var(--ink);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    transition:
+      background-color var(--dur-quick) var(--ease-out),
+      opacity var(--dur-quick) var(--ease-out),
+      transform var(--dur-press) var(--ease-out);
+  }
+
+  .chip:hover {
+    background: rgba(18, 18, 18, 0.1);
+  }
+
+  .chip:active {
+    transform: scale(0.97);
+  }
+
+  .chip:disabled {
+    opacity: 0.45;
+    cursor: default;
+  }
+
+  .chip:focus-visible {
+    border-radius: 999px;
+  }
+
+  /* Touch: every control gets a comfortable target. */
+  @media (pointer: coarse) {
+    .seg__item {
+      min-height: 2.75rem;
+      padding-inline: 0.875rem;
+    }
+
+    .seg {
+      border-radius: 1.5rem;
+    }
+
+    .chip {
+      min-height: 2.75rem;
+    }
+  }
+
+  /* ── Technical details ────────────────────────────────────────────── */
+
+  .details {
+    border-block: 1px solid var(--line);
+  }
+
+  .details > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.6875rem;
+    cursor: pointer;
+    list-style: none;
+    outline-offset: -2px;
+  }
+
+  .details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Plus that turns into a minus. */
+  .details__icon {
+    position: relative;
+    flex: none;
+    width: 0.6875rem;
+    height: 0.6875rem;
+    color: var(--ink-2);
+  }
+
+  .details__icon::before,
+  .details__icon::after {
+    content: "";
+    position: absolute;
+    inset: 50% 0 auto;
+    height: 1px;
+    background: currentColor;
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  .details__icon::after {
+    transform: rotate(90deg);
+  }
+
+  .details[open] .details__icon::after {
+    transform: rotate(0deg);
+  }
+
+  .details__body {
+    padding-block: 0.5rem 1.75rem;
+  }
+
+  .details__body h3 {
+    margin-top: 1.75rem;
+    color: var(--ink-2);
+    font-weight: inherit;
+  }
+
+  .details__body h3:first-child {
+    margin-top: 0.25rem;
+  }
+
+  .details__list > li {
+    position: relative;
+    margin-top: 0.375rem;
+    padding-left: 1rem;
+  }
+
+  .details__list > li::before {
+    content: "";
+    position: absolute;
+    top: 0.72em;
+    left: 0.125rem;
+    width: 0.25rem;
+    height: 1px;
+    background: var(--ink-3);
+  }
+
+  .details__steps {
+    counter-reset: step;
+  }
+
+  .details__steps > li {
+    counter-increment: step;
+    padding-left: 1.5rem;
+  }
+
+  .details__steps > li::before {
+    content: counter(step);
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    background: none;
+    color: var(--ink-2);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .details__code {
+    margin-top: 0.625rem;
+    overflow-x: auto;
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    tab-size: 2;
+  }
+
+  /* ── Media reveal ─────────────────────────────────────────────────── */
+
+  /*
+   * Images fade in once decoded. Only applies when script is running
+   * (html.js), so content is never hidden without it.
    */
   .js .media-reveal {
     opacity: 0;
-    transform: scale(1.012);
-    transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+    transition: opacity var(--dur-slow) var(--ease-out);
   }
 
   .js .media-reveal[data-loaded="true"] {
     opacity: 1;
-    transform: none;
   }
 
-  /* Pressable controls: a short, shallow press */
+  /* Pressable controls: a short, shallow press. */
   .pressable {
-    transition: transform var(--dur-press) var(--ease-out), opacity var(--dur-quick) var(--ease-out),
-      color var(--dur-quick) var(--ease-out), background-color var(--dur-quick) var(--ease-out);
+    transition:
+      transform var(--dur-press) var(--ease-out),
+      opacity var(--dur-quick) var(--ease-out),
+      color var(--dur-quick) var(--ease-out),
+      background-color var(--dur-quick) var(--ease-out);
   }
 
   .pressable:active {
     transform: scale(0.97);
   }
-}
-
-/* ── Scrubber (range input) ─────────────────────────────────────────── */
-
-.scrubber {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 20px;
-  background: transparent;
-  cursor: pointer;
-}
-
-.scrubber:disabled {
-  cursor: default;
-  opacity: 0.4;
-}
-
-.scrubber::-webkit-slider-runnable-track {
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(to right, var(--ink) var(--progress, 0%), var(--line-strong) var(--progress, 0%));
-}
-
-.scrubber::-moz-range-track {
-  height: 2px;
-  border-radius: 2px;
-  background: var(--line-strong);
-}
-
-.scrubber::-moz-range-progress {
-  height: 2px;
-  background: var(--ink);
-}
-
-.scrubber::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
-  margin-top: -5px;
-  border-radius: 50%;
-  background: var(--ink);
-  box-shadow: 0 0 0 3px var(--surface);
-  transition: transform var(--dur-press) var(--ease-out);
-}
-
-.scrubber::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
-  border: 0;
-  border-radius: 50%;
-  background: var(--ink);
-}
-
-.scrubber:active::-webkit-slider-thumb {
-  transform: scale(1.25);
-}
-
-.scrubber:focus-visible {
-  outline-offset: 4px;
 }
 
 /* ── Lightbox ───────────────────────────────────────────────────────── */
@@ -229,7 +730,7 @@ html:has(dialog[open]) {
   margin: 0;
   padding: 0;
   border: 0;
-  background: var(--canvas);
+  background: var(--bg);
   color: var(--ink);
 }
 
@@ -273,11 +774,861 @@ html:has(dialog[open]) {
     animation: none;
   }
 
-  .js .media-reveal {
+  .pressable:active,
+  .seg__item:active,
+  .chip:active {
     transform: none;
   }
 
-  .pressable:active {
+  .back:hover svg {
     transform: none;
+  }
+}
+
+/* ── Site shell ─────────────────────────────────────────────────────── */
+
+@layer components {
+  /* The footer rests at the bottom of the window on a short page. */
+  .shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .shell > main {
+    flex: 1 0 auto;
+  }
+
+  /* ── A plain list of links ────────────────────────────────────────── */
+
+  /*
+   * Project names, one to a line. Nothing marks them as links at rest
+   * except that they are a list of names; under the pointer a name is
+   * underlined and its neighbours step back.
+   */
+  .links > li > a {
+    display: block;
+    padding-block: 0.3125rem;
+    color: var(--ink);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: transparent;
+    transition:
+      color var(--dur-base) var(--ease-out),
+      text-decoration-color var(--dur-quick) var(--ease-out);
+  }
+
+  @media (hover: hover) {
+    .links > li > a:hover {
+      text-decoration-color: var(--line-strong);
+    }
+
+    .links:has(a:hover) a:not(:hover) {
+      color: var(--ink-2);
+    }
+  }
+
+  .links:has(a:focus-visible) a:not(:focus-visible) {
+    color: var(--ink-2);
+  }
+
+  @media (pointer: coarse) {
+    .links > li > a {
+      padding-block: 0.5625rem;
+    }
+  }
+
+  /* The homepage list: a hairline between names, and one under the last. */
+  .links--ruled > li {
+    border-top: 1px solid var(--line);
+  }
+
+  .links--ruled > li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .links--ruled > li > a {
+    padding-block: 0.6875rem;
+  }
+
+  /* ── Inline disclosure ────────────────────────────────────────────── */
+
+  /*
+   * A region that opens in place. The row it sits in grows from nothing to
+   * the height of its content, so nothing is measured and nothing jumps.
+   * While closed the content is hidden from every reader, not just the eye.
+   */
+  .reveal {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--dur-slow) var(--ease-out);
+  }
+
+  .reveal[data-open="true"] {
+    grid-template-rows: 1fr;
+  }
+
+  .reveal__inner {
+    min-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity var(--dur-base) var(--ease-out),
+      visibility 0s linear var(--dur-slow);
+  }
+
+  .reveal[data-open="true"] > .reveal__inner {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      opacity var(--dur-slow) var(--ease-out) 60ms,
+      visibility 0s;
+  }
+
+  /* Once open and at rest nothing is clipped, so focus rings show whole. */
+  .reveal[data-settled="true"] > .reveal__inner {
+    overflow: visible;
+  }
+
+  /* Restored from a previous visit: already open, with no animation. */
+  .reveal[data-instant="true"],
+  .reveal[data-instant="true"] > .reveal__inner {
+    transition: none;
+  }
+
+  /* The words that open a region: "More info". */
+  .more {
+    color: var(--ink-2);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: var(--line-strong);
+    transition:
+      color var(--dur-quick) var(--ease-out),
+      text-decoration-color var(--dur-quick) var(--ease-out);
+  }
+
+  .more:hover {
+    color: var(--ink);
+    text-decoration-color: currentColor;
+  }
+
+  /* A heading that opens what is under it, with a small chevron. */
+  .fold {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    /* A finger-sized target that does not move the text. */
+    margin: -0.625rem;
+    padding: 0.625rem;
+    color: var(--ink-2);
+    transition: color var(--dur-quick) var(--ease-out);
+  }
+
+  .fold:hover,
+  .fold[aria-expanded="true"] {
+    color: var(--ink);
+  }
+
+  .fold > svg {
+    flex: none;
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  .fold[aria-expanded="true"] > svg {
+    transform: rotate(180deg);
+  }
+
+  /*
+   * Roles held at one organization, most recent first. A hairline joins
+   * them, with a small mark at each role, so the list reads as one path.
+   */
+  .progression > li {
+    position: relative;
+    padding-left: 1.125rem;
+  }
+
+  .progression > li + li {
+    margin-top: 0.875rem;
+  }
+
+  .progression > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5625rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--ink-3);
+  }
+
+  .progression > li:first-child::before {
+    background: var(--ink);
+  }
+
+  /* The line runs from one mark to the next, never past the last. */
+  .progression > li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 1.0625rem;
+    bottom: -0.875rem;
+    width: 1px;
+    background: var(--line-strong);
+  }
+
+  /* A short list of facts: what, where, when. */
+  .record + .record {
+    margin-top: 0.875rem;
+  }
+
+  /* ── Footer ───────────────────────────────────────────────────────── */
+
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding-block: 1.25rem 2.5rem;
+    color: var(--ink-2);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .footer {
+      padding-bottom: 3.5rem;
+    }
+  }
+
+  .footer a {
+    transition: color var(--dur-quick) var(--ease-out);
+  }
+
+  .footer a:hover {
+    color: var(--ink);
+  }
+
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.125rem;
+  }
+
+  /* Padding makes each link a comfortable target without moving it. */
+  .footer__links a {
+    display: inline-block;
+    margin: -0.625rem -0.375rem;
+    padding: 0.625rem 0.375rem;
+  }
+
+  /*
+   * The clock. Each character sits in its own slot. When a character
+   * changes, the old one leaves upward and the new one arrives from below;
+   * characters that did not change do not move.
+   */
+  .clock {
+    opacity: 0;
+    transition: opacity var(--dur-slow) var(--ease-out);
+  }
+
+  .clock[data-ready="true"] {
+    opacity: 1;
+  }
+
+  /*
+   * The time is a row of clipped slots, each exactly one line tall. Placed
+   * at the top of a line of the same height, its figures share the
+   * baseline of the words after it. (A clipped box would otherwise sit on
+   * its bottom edge and lift the time above the text.)
+   */
+  .clock__time {
+    display: inline-flex;
+    vertical-align: top;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .clock__slot {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 1.25rem;
+    white-space: pre;
+  }
+
+  /* A digit is one figure wide, so the line never reflows as it changes. */
+  .clock__slot[data-digit] {
+    width: 1ch;
+    text-align: center;
+    transition: width var(--dur-slow) var(--ease-out);
+  }
+
+  /* The tens of the hour, absent from 1 to 9. */
+  .clock__slot[data-digit][data-empty] {
+    width: 0;
+  }
+
+  .clock__char {
+    display: block;
+  }
+
+  .clock__char[data-move="in"] {
+    animation: clock-in var(--dur-slow) var(--ease-out) both;
+  }
+
+  .clock__char[data-move="out"] {
+    position: absolute;
+    inset: 0 0 auto;
+    animation: clock-out var(--dur-slow) var(--ease-out) both;
+  }
+
+  @keyframes clock-in {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes clock-out {
+    to {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
+
+  /* ── Creative Technology: one continuous page ─────────────────────── */
+
+  /* Each project is a section with a stable address. */
+  .ct-section {
+    margin-top: 7rem;
+    /* Lands a little below the top of the window when linked to. */
+    scroll-margin-top: 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .ct-section {
+      margin-top: 9rem;
+      scroll-margin-top: 5rem;
+    }
+  }
+
+  /* The first project follows the introduction closely: it is the page's opening, not a new chapter. */
+  .ct-head + .ct-section {
+    margin-top: 4rem;
+  }
+
+  @media (min-width: 640px) {
+    .ct-head + .ct-section {
+      margin-top: 5rem;
+    }
+  }
+
+  /* A part of a project: a second system that grew out of the first. */
+  .ct-sub {
+    margin-top: 5rem;
+    scroll-margin-top: 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .ct-sub {
+      margin-top: 6rem;
+      scroll-margin-top: 5rem;
+    }
+  }
+
+  .ct-sub__head {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /*
+   * The table of contents lives in the left margin on a wide screen. It is
+   * fixed to the window and takes no space, so the column stays centred.
+   */
+  .toc {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .toc {
+      position: fixed;
+      z-index: 5;
+      top: 5rem;
+      left: max(2rem, calc(50% - var(--measure) / 2 - 15.5rem));
+      display: block;
+      width: 10rem;
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+    }
+
+    /* The link back sits in the margin with it, so it is not repeated above the title. */
+    .ct-head .page-head__back {
+      display: none;
+    }
+  }
+
+  .toc__list {
+    margin-top: 1.75rem;
+  }
+
+  .toc__list a {
+    display: block;
+    padding-block: 0.1875rem;
+    color: var(--ink-2);
+    transition: color var(--dur-quick) var(--ease-out);
+  }
+
+  .toc__list a:hover {
+    color: var(--ink);
+  }
+
+  /* Where you are: darker and a little heavier. No colour, no marker. */
+  .toc__list a[aria-current="true"] {
+    color: var(--ink);
+    font-weight: 540;
+  }
+}
+
+/* Anchors glide; route changes and reduced motion do not. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clock__char[data-move] {
+    animation: none;
+  }
+
+  .clock__char[data-move="out"] {
+    display: none;
+  }
+}
+
+/* ── Code ───────────────────────────────────────────────────────────── */
+
+@layer components {
+  /*
+   * Code is part of the work, so it is shown in the reading flow, on the
+   * same surface and at the same width as a stage. No window chrome.
+   */
+  .code {
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .code__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem 0;
+    color: var(--ink-2);
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .code__title {
+    font-family: var(--mono);
+  }
+
+  .code__body {
+    margin: 0;
+    padding: 0.625rem 1rem 0.875rem;
+    color: #2e2e2e;
+    font-family: var(--mono);
+    font-size: 0.78125rem;
+    line-height: 1.25rem;
+    tab-size: 2;
+  }
+
+  .code__body:focus-visible {
+    outline-offset: -2px;
+    border-radius: var(--radius);
+  }
+
+  /* A grid, so every line is as wide as the longest one and a band spans the panel. */
+  /* Long lines wrap under themselves, never under the number, and never scroll sideways. */
+  .code__body > code {
+    display: grid;
+    counter-reset: line;
+    font: inherit;
+  }
+
+  .code__line {
+    display: block;
+    margin-inline: -1rem;
+    padding-inline: calc(1rem + 2.125rem) 1rem;
+    counter-increment: line;
+    text-indent: -2.125rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    transition:
+      opacity var(--dur-base) var(--ease-out),
+      background-color var(--dur-base) var(--ease-out);
+  }
+
+  /* Line numbers are drawn, not written: selecting the code never copies them. */
+  .code__line::before {
+    content: counter(line);
+    display: inline-block;
+    width: 1.125rem;
+    margin-right: 1rem;
+    text-indent: 0;
+    color: var(--ink-3);
+    text-align: right;
+    user-select: none;
+  }
+
+  /* While a demonstration is on a step, its lines stay and the rest step back. */
+  .code[data-picking="true"] .code__line:not([data-on]) {
+    opacity: 0.42;
+  }
+
+  .code__line[data-on] {
+    background: rgba(18, 18, 18, 0.05);
+  }
+
+  /* The rest of a longer sample: opens in place, the numbering carries on. */
+  .code__more > summary {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 2.75rem;
+    margin-top: -0.375rem;
+    padding: 0 1rem;
+    color: var(--ink-2);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    list-style: none;
+    cursor: pointer;
+    transition: color var(--dur-quick) var(--ease-out);
+  }
+
+  .code__more > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .code__more > summary::after {
+    content: "";
+    width: 0.375rem;
+    height: 0.375rem;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-0.125rem) rotate(45deg);
+    transition: transform var(--dur-quick) var(--ease-out);
+  }
+
+  .code__more[open] > summary::after {
+    transform: translateY(0.125rem) rotate(-135deg);
+  }
+
+  .code__more > summary:hover {
+    color: var(--ink);
+  }
+
+  .code__more > summary:focus-visible {
+    outline-offset: -2px;
+  }
+
+  .code__more-open,
+  .code__more[open] .code__more-closed {
+    display: none;
+  }
+
+  .code__more[open] .code__more-open {
+    display: inline;
+  }
+
+  .code__body--rest {
+    padding-top: 0;
+  }
+
+  .code__note {
+    padding: 0 1rem 0.875rem;
+    color: var(--ink-2);
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+
+  /* Two hues and a weight. Everything else is a grey. */
+  .tok-comment {
+    color: var(--ink-2);
+  }
+
+  .tok-string {
+    color: #0a6470;
+  }
+
+  .tok-number,
+  .tok-constant {
+    color: #8f5510;
+  }
+
+  .tok-keyword {
+    color: var(--ink);
+    font-weight: 560;
+  }
+
+  .tok-property,
+  .tok-function {
+    color: var(--ink);
+  }
+
+  .tok-punctuation {
+    color: #707070;
+  }
+
+  /* A phone has room for about forty characters: drop the numbers and a little size. */
+  @media (max-width: 479px) {
+    .code__body {
+      font-size: 0.71875rem;
+      line-height: 1.1875rem;
+    }
+
+    .code__line {
+      padding-inline: calc(1rem + 1rem) 1rem;
+      text-indent: -1rem;
+    }
+
+    .code__line::before {
+      display: none;
+    }
+  }
+
+  /* ── Scenes ───────────────────────────────────────────────────────── */
+
+  /*
+   * A scene is a stage with a fixed shape. Everything inside it is placed
+   * and sized against the stage's own width (cqw), so a scene is the same
+   * picture at 580px and at 340px and nothing is measured in script.
+   *
+   *   --ar      width over height of the stage
+   *   --travel  how far the page scrolls while a pinned scene plays
+   */
+  .scene {
+    container-type: inline-size;
+    --ar: var(--ar-narrow, 1);
+    --travel: var(--travel-narrow, 80svh);
+  }
+
+  @media (min-width: 640px) {
+    .scene {
+      --ar: var(--ar-wide, 1);
+      --travel: var(--travel-wide, 90svh);
+    }
+  }
+
+  .scene__stage {
+    position: relative;
+    overflow: hidden;
+    height: calc(100cqw / var(--ar));
+    border-radius: var(--radius);
+    background: var(--surface);
+    /* Sizes inside a scene are set in cqw; this is the fallback for text. */
+    font-size: 2.2cqw;
+  }
+
+  /*
+   * A pinned scene: the track is taller than the stage, and the stage
+   * holds its place while the track scrolls past it. Scrolling is never
+   * intercepted; the page simply has a stretch where the stage stays put.
+   */
+  .scene__track {
+    height: calc(100cqw / var(--ar) + var(--travel));
+  }
+
+  .scene__track > .scene__stage {
+    position: sticky;
+    top: max(0.75rem, calc((100svh - 100cqw / var(--ar)) / 2));
+  }
+
+  /* Less motion: nothing is tied to scrolling. The scene shows its finished state. */
+  @media (prefers-reduced-motion: reduce) {
+    .scene__track {
+      height: auto;
+    }
+
+    .scene__track > .scene__stage {
+      position: relative;
+      top: auto;
+    }
+  }
+
+  /* An element of a scene: placed by its own box, moved only by transform. */
+  .scene [data-m] {
+    will-change: transform, opacity;
+  }
+
+  /*
+   * A system demonstration: the pinned unit is the stage, its step bar and,
+   * on a wide screen, the code in the right margin. The bar is part of what
+   * pins, so the sentence explaining the picture never leaves the screen.
+   */
+  .scene--system {
+    --bar-h: 3.5rem;
+  }
+
+  .scene__pin {
+    position: relative;
+  }
+
+  .scene__track > .scene__pin {
+    position: sticky;
+    top: max(0.75rem, calc((100svh - 100cqw / var(--ar) - var(--bar-h)) / 2));
+  }
+
+  .scene--system .scene__track {
+    height: calc(100cqw / var(--ar) + var(--bar-h) + var(--travel));
+  }
+
+  .scene__bar {
+    height: var(--bar-h);
+    padding-top: 0.75rem;
+  }
+
+  .scene__steps {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Each step is a dot: a 24px target around a 6px mark. */
+  .scene__steps button {
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.25rem;
+    border-radius: 999px;
+    color: var(--ink-3);
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    transition: color var(--dur-quick) var(--ease-out);
+  }
+
+  .scene__steps button:hover,
+  .scene__steps button[data-done] {
+    color: var(--ink-2);
+  }
+
+  .scene__steps button[aria-current="step"] {
+    color: var(--ink);
+  }
+
+  .scene__tick {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background: currentColor;
+    transition: transform var(--dur-quick) var(--ease-out);
+  }
+
+  .scene__steps button[aria-current="step"] .scene__tick {
+    transform: scale(1.4);
+  }
+
+  /*
+   * A figure: a demonstration that sits in the page like a figure in an
+   * article. Nothing pins; the stage and its step controls always scroll
+   * together.
+   */
+  .scene--figure .scene__bar {
+    height: auto;
+    padding-top: 0.875rem;
+  }
+
+  /* Rows of controls sit far enough apart that their touch areas never overlap. */
+  .scene__chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 0.25rem;
+  }
+
+  /*
+   * A step's name, as a quiet control. The current one is set in ink.
+   * The visible pill stays small; the touch area is a full 44px tall and at
+   * least 44px wide.
+   */
+  .scene__chip {
+    position: relative;
+    min-width: 2.75rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    color: var(--ink-2);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    transition:
+      color var(--dur-quick) var(--ease-out),
+      background-color var(--dur-quick) var(--ease-out);
+  }
+
+  .scene__chip::before {
+    content: "";
+    position: absolute;
+    inset: -0.5rem -0.125rem;
+  }
+
+  .scene__chip:hover {
+    color: var(--ink);
+  }
+
+  .scene__chip[aria-pressed="true"] {
+    background: rgba(18, 18, 18, 0.06);
+    color: var(--ink);
+  }
+
+  /* Pause and Play: present, never louder than the steps. */
+  .scene__chip--quiet {
+    color: var(--ink-3);
+  }
+
+  /* A loop returning to its start: the stage's contents fade out and back in. */
+  .scene--figure .scene__stage > * {
+    transition: opacity 520ms var(--ease-in-out);
+  }
+
+  .scene--figure .scene__stage[data-resetting] > * {
+    opacity: 0;
+  }
+
+  /* On a phone the sentence may take two lines. */
+  @media (max-width: 479px) {
+    .scene--system {
+      --bar-h: 4.75rem;
+    }
+  }
+
+  /* The same distance as code that follows any other demonstration. */
+  .scene__after {
+    margin-top: 2.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene--system .scene__track {
+      height: auto;
+    }
+
+    .scene__track > .scene__pin {
+      position: relative;
+      top: auto;
+    }
+  }
+
+  /* The line of small grey text inside a stage that says what is happening. */
+  .scene__note {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 0 4cqw 3.2cqw;
+    color: var(--ink-2);
+    font-size: max(0.6875rem, 2.1cqw);
+    line-height: 1.4;
+    text-align: center;
   }
 }

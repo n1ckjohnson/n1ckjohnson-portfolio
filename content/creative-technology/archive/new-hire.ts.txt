@@ -1,0 +1,105 @@
+import type { Project } from "@/content/creative-technology/types";
+
+export type NewHireDemo = {
+  /** Real system output rendered from synthetic test cards and fictional names. */
+  certified: { graphic: string; name: string; title: string; family: string; shows: string }[];
+  /** What normalization guarantees, in the system's own terms. */
+  guarantees: { label: string; detail: string }[];
+  /** Fictional batch for the illustrative model. tilt in degrees, scale and offsets relative to the frame. */
+  batch: { name: string; title: string; tilt: number; scale: number; x: number; y: number; route?: "review" | "rejected" }[];
+};
+
+export const newHire: Project<NewHireDemo> = {
+  id: "new-hire",
+  slug: "new-hire",
+  order: 9,
+  title: "New hire / new title",
+  kind: "Batch production",
+  blurb: "Headshots aligned and titles fitted in batches.",
+  year: "2026",
+  summary:
+    "A batch-capable system that turns employee data and headshots into approved graphics. The workflow handles headshot normalization, image placement, name and title updates, typography fitting and export.",
+  line: "I built a batch system that turns a list of names, titles and headshots into finished new hire graphics.",
+  status: "built",
+  statusNote: {
+    text: "The renderer is certified and has produced real batches. The operator interface has not been started.",
+    basis: "evidence",
+    tier: "internal",
+  },
+  stack: ["Python", "MediaPipe", "OpenCV", "Photoshop / ExtendScript", "Structured batch data", "Automated typography fitting"],
+  automated: [
+    "Parsing a pasted list into employee records",
+    "Matching each record to its headshot",
+    "Normalizing every face: level, same size, same position",
+    "Name and title fitting, including two-line titles",
+    "A 1080 × 1080 graphic per person and a batch report",
+  ],
+  designerControlled: [
+    "The approved templates",
+    "Anything the system routes to review instead of guessing",
+    "Final sign-off on the batch",
+  ],
+  detail: [
+    "Headshots arrive framed every possible way. Face landmarks locate both eyes, and a similarity transform rotates, scales and moves each photo so the eyes land on the same line at the same distance apart.",
+    "The system does not guess. A photo with no detectable face is rejected, and one that would need upscaling is set aside for review.",
+    "Photoshop opens the sealed master fresh for every person, sets the name and title, fits the type by width only, places the normalized image and exports. The master is never saved.",
+  ],
+  pipeline: [
+    { label: "Paste", detail: "A list of names and titles, parsed into records." },
+    { label: "Match", detail: "Each record is paired with its headshot by filename." },
+    { label: "Preflight", detail: "Master hash, Photoshop host and required fonts are verified." },
+    { label: "Normalize", detail: "Iris landmarks drive a similarity transform for every face." },
+    { label: "Render", detail: "Name, title and image placed in a fresh copy of the master." },
+    { label: "Export", detail: "One 1080 × 1080 PNG per person and a batch report." },
+  ],
+  facts: [
+    { text: "Normalization fixes three things: head tilt, face size and face position.", basis: "evidence" },
+    { text: "Type is fitted by width only and is never enlarged. Titles that cannot fit on one line wrap to two.", basis: "evidence" },
+    { text: "A font check stops the batch rather than letting Photoshop substitute a typeface.", basis: "evidence" },
+    { text: "Two template families are supported.", basis: "evidence" },
+    { text: "The examples here were rendered by the system from synthetic test cards and fictional names. No employee is shown.", basis: "evidence" },
+    { text: "Largest real batch so far: 37 graphics in one run, all successful.", basis: "evidence", tier: "internal" },
+  ],
+  code: {
+    title: "manifest.json",
+    language: "json",
+    code: `{
+  "batchId": "BATCH-EXAMPLE",
+  "employees": [
+    {
+      "displayName": "Ava Lee",
+      "title": "Designer",
+      "template": "TEAM",
+      "matchStatus": "MATCHED",
+      "preflightStatus": "READY"
+    }
+  ]
+}`,
+    note: "Illustrative manifest with a fictional employee, in the shape the batch uses.",
+  },
+  mediaPrefix: "new-hire/",
+  interaction: "new-hire",
+  demo: {
+    certified: [
+      { graphic: "new-hire/cert-0001", name: "Ava Lee", title: "Designer", family: "Team template", shows: "Short name, one-line title" },
+      { graphic: "new-hire/cert-0004", name: "Christopher Montgomery", title: "Senior Director, Partnership Marketing Strategy", family: "Stadium template", shows: "Long name fitted by width" },
+      { graphic: "new-hire/cert-0008", name: "Noah Reed", title: "Director, Regional Facility Equipment Servicing & Logistics", family: "Stadium template", shows: "Title wrapped to two lines" },
+    ],
+    guarantees: [
+      { label: "Level", detail: "Head tilt is corrected." },
+      { label: "Same size", detail: "The eyes are always the same distance apart." },
+      { label: "Same position", detail: "The eyes always sit on the same line, centred." },
+    ],
+    batch: [
+      { name: "Sample 01", title: "Title", tilt: -7, scale: 0.82, x: -0.12, y: 0.1 },
+      { name: "Sample 02", title: "Title", tilt: 5, scale: 1.22, x: 0.1, y: -0.08 },
+      { name: "Sample 03", title: "Title", tilt: 2, scale: 0.94, x: 0.16, y: 0.14 },
+      { name: "Sample 04", title: "Title", tilt: -3, scale: 1.3, x: -0.06, y: 0.02 },
+      { name: "Sample 05", title: "Title", tilt: 9, scale: 0.76, x: 0.02, y: -0.12 },
+      { name: "Sample 06", title: "Title", tilt: -5, scale: 1.08, x: -0.18, y: -0.04 },
+      { name: "Sample 07", title: "Title", tilt: 4, scale: 0.6, x: 0.08, y: 0.06, route: "review" },
+      { name: "Sample 08", title: "Title", tilt: 0, scale: 1, x: 0, y: 0, route: "rejected" },
+    ],
+  },
+  publication: { copy: "approved", note: "Copy supplied by the owner. Only synthetic material is used; no employee data." },
+};

@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { SiteFooter } from "@/components/site/site-footer";
-import { SiteHeader } from "@/components/site/site-header";
-import { detectLogoSrc } from "@/lib/media";
 
 // Variable Inter with the optical-size axis: display cuts at large sizes,
 // text cuts at small ones, from a single font file.
@@ -13,8 +10,15 @@ const inter = Inter({
   axes: ["opsz"],
 });
 
+// Code is part of the work shown here, so it gets one typeface that looks
+// the same on every device instead of whatever monospace the system has.
+const mono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
+
 const DESCRIPTION =
-  "I design creative work and build the systems behind it. Designer for the Jacksonville Jaguars. @n1ckmade / @n1ckjohnson";
+  "Designer with the Jacksonville Jaguars, working on fan-facing creative and the production systems behind it. @n1ckmade / @n1ckjohnson";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://n1ckjohnson.com"),
@@ -50,7 +54,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fcfcfb",
+  themeColor: "#ffffff",
 };
 
 const jsonLd = {
@@ -69,14 +73,16 @@ const jsonLd = {
       jobTitle: "Digital Designer",
       worksFor: { "@type": "Organization", name: "Jacksonville Jaguars" },
       url: "https://n1ckjohnson.com",
-      sameAs: ["https://linkedin.com/in/nickjohnson1397/", "https://www.instagram.com/n1ckmade/"],
+      sameAs: ["https://linkedin.com/in/nickjohnson1397/", "https://www.instagram.com/n1ckmade/", "https://x.com/n1ckmade"],
     },
   ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    // data-scroll-behavior: anchors on a page glide (see globals.css); moving
+    // between pages does not.
+    <html lang="en" className={`${inter.variable} ${mono.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         {/* Marks JS as available before first paint, so reveal-on-load
             styles never hide content when scripts don't run. */}
@@ -86,13 +92,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="font-sans text-body">
         <a
           href="#main"
-          className="fixed left-4 top-3 z-50 -translate-y-16 rounded-md bg-ink px-3 py-2 text-small text-canvas transition-transform duration-quick ease-out focus:translate-y-0"
+          className="fixed left-4 top-3 z-50 -translate-y-20 rounded-full bg-ink px-4 py-3 text-small text-canvas transition-transform duration-quick ease-out focus:translate-y-0"
         >
           Skip to content
         </a>
-        <SiteHeader logoSrc={detectLogoSrc()} />
-        <main id="main">{children}</main>
-        <SiteFooter />
+        {/* Every page shares one shell, provided by app/(site)/layout.tsx. */}
+        {children}
       </body>
     </html>
   );

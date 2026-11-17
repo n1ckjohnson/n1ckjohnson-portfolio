@@ -1,15 +1,14 @@
 import { projects, type Project } from "@/content/projects";
-import { systems, type SystemProject } from "@/content/systems";
 
 /**
- * Single source of truth for what is public, in what order, and how
- * entries link to one another. Systems lead; creative work follows.
- * Archived entries keep their data but never appear here.
+ * The design portfolio: what is public, in what order, and how entries link
+ * to one another. Archived entries keep their data but never appear here.
+ *
+ * Creative Technology projects have their own model and routes, see
+ * lib/creative-technology/projects.ts.
  */
 
-export type Entry =
-  | { kind: "system"; slug: string; title: string; label: string; project: SystemProject }
-  | { kind: "creative"; slug: string; title: string; label: string; project: Project };
+export type Entry = { slug: string; title: string; label: string; project: Project };
 
 /** "CAMPAIGN SYSTEM" → "Campaign system" */
 function sentenceCase(value: string) {
@@ -17,33 +16,20 @@ function sentenceCase(value: string) {
   return lower.charAt(0).toUpperCase() + lower.slice(1);
 }
 
-export const systemEntries: Entry[] = systems
-  .filter((p) => p.status !== "archived")
+export const publicEntries: Entry[] = projects
+  .filter((project) => project.status !== "archived")
   .map((project) => ({
-    kind: "system",
-    slug: project.slug,
-    title: project.title,
-    label: project.discipline,
-    project,
-  }));
-
-export const creativeEntries: Entry[] = projects
-  .filter((p) => p.status !== "archived")
-  .map((project) => ({
-    kind: "creative",
     slug: project.slug,
     title: project.title,
     label: sentenceCase(project.type),
     project,
   }));
 
-export const publicEntries: Entry[] = [...systemEntries, ...creativeEntries];
-
 export function getEntry(slug: string): Entry | undefined {
   return publicEntries.find((entry) => entry.slug === slug);
 }
 
-/** Previous / next within the full public sequence, looping at the ends. */
+/** Previous / next within the design portfolio, looping at the ends. */
 export function getNeighbors(slug: string) {
   const index = publicEntries.findIndex((entry) => entry.slug === slug);
   const count = publicEntries.length;

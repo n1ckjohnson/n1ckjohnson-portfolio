@@ -4,8 +4,8 @@ import { Media } from "@/components/media/media";
 import { Gallery, type GalleryGroupData } from "@/components/media/gallery";
 
 /**
- * Renders one media slot from a creative layout. Missing files simply
- * render nothing — no empty placeholders on a public page.
+ * Renders one media slot from a creative layout, on the wide stage. Missing
+ * files simply render nothing: no empty placeholders on a public page.
  */
 export function MediaBlockView({ block, slug, title }: { block?: MediaBlock; slug: string; title: string }) {
   if (!block) return null;
@@ -15,11 +15,11 @@ export function MediaBlockView({ block, slug, title }: { block?: MediaBlock; slu
     const item = findMedia(dir, block.file);
     if (!item) return null;
     return (
-      <figure className="page mt-16 sm:mt-24">
-        <div className="overflow-hidden rounded-[4px] bg-surface">
-          <Media item={item} alt={`${title} — ${block.alt ?? block.label ?? "campaign visual"}`} />
+      <figure className="wide spaced">
+        <div className="overflow-hidden rounded-stage bg-surface">
+          <Media item={item} alt={`${title}: ${block.alt ?? block.label ?? "campaign visual"}`} sizes="(min-width: 1008px) 960px, 100vw" />
         </div>
-        {block.label ? <figcaption className="mt-3 text-small text-ink-2">{block.label}</figcaption> : null}
+        {block.label ? <figcaption className="caption">{block.label}</figcaption> : null}
       </figure>
     );
   }
@@ -31,7 +31,7 @@ export function MediaBlockView({ block, slug, title }: { block?: MediaBlock; slu
   if (groups.length === 0) return null;
 
   return (
-    <div className="page mt-16 sm:mt-24">
+    <div className="wide spaced">
       <Gallery title={title} groups={groups} columns={block.columns} />
     </div>
   );

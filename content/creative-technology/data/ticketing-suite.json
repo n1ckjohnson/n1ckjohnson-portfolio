@@ -1,0 +1,508 @@
+{
+  "families": [
+    {
+      "key": "nfl",
+      "label": "NFL placements",
+      "count": 10
+    },
+    {
+      "key": "airport",
+      "label": "Airport screens",
+      "count": 5
+    },
+    {
+      "key": "videoboards",
+      "label": "Stadium videoboards",
+      "count": 2
+    },
+    {
+      "key": "ticketing",
+      "label": "Ticketing platform",
+      "count": 11
+    },
+    {
+      "key": "dynamic",
+      "label": "Dynamic display",
+      "count": 6
+    },
+    {
+      "key": "endcards",
+      "label": "TV endcards",
+      "count": 8
+    },
+    {
+      "key": "social",
+      "label": "Social",
+      "count": 10
+    },
+    {
+      "key": "sms",
+      "label": "SMS",
+      "count": 6
+    },
+    {
+      "key": "ooh",
+      "label": "Out-of-home",
+      "count": 3
+    },
+    {
+      "key": "print",
+      "label": "Print",
+      "count": 1
+    },
+    {
+      "key": "partner-banner",
+      "label": "Partner banner",
+      "count": 1
+    },
+    {
+      "key": "partner-screens",
+      "label": "Partner screens",
+      "count": 1
+    },
+    {
+      "key": "split-banner",
+      "label": "Split banner",
+      "count": 2
+    },
+    {
+      "key": "ribbons",
+      "label": "Videoboard ribbons",
+      "count": 2
+    }
+  ],
+  "items": [
+    {
+      "id": "ticketing/nfl-01",
+      "family": "nfl",
+      "w": 1200,
+      "h": 1639,
+      "variant": "Email"
+    },
+    {
+      "id": "ticketing/nfl-02",
+      "family": "nfl",
+      "w": 1280,
+      "h": 640,
+      "variant": "Newsletter"
+    },
+    {
+      "id": "ticketing/nfl-03",
+      "family": "nfl",
+      "w": 728,
+      "h": 90
+    },
+    {
+      "id": "ticketing/nfl-04",
+      "family": "nfl",
+      "w": 970,
+      "h": 90
+    },
+    {
+      "id": "ticketing/nfl-05",
+      "family": "nfl",
+      "w": 300,
+      "h": 600
+    },
+    {
+      "id": "ticketing/nfl-06",
+      "family": "nfl",
+      "w": 300,
+      "h": 100
+    },
+    {
+      "id": "ticketing/nfl-07",
+      "family": "nfl",
+      "w": 300,
+      "h": 250
+    },
+    {
+      "id": "ticketing/nfl-08",
+      "family": "nfl",
+      "w": 320,
+      "h": 50
+    },
+    {
+      "id": "ticketing/nfl-09",
+      "family": "nfl",
+      "w": 1920,
+      "h": 1080,
+      "lang": "es"
+    },
+    {
+      "id": "ticketing/nfl-10",
+      "family": "nfl",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "ticketing/airport-01",
+      "family": "airport",
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "id": "ticketing/airport-02",
+      "family": "airport",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "ticketing/airport-03",
+      "family": "airport",
+      "w": 3240,
+      "h": 1920
+    },
+    {
+      "id": "ticketing/airport-04",
+      "family": "airport",
+      "w": 3840,
+      "h": 1080
+    },
+    {
+      "id": "ticketing/airport-05",
+      "family": "airport",
+      "w": 384,
+      "h": 256
+    },
+    {
+      "id": "ticketing/videoboards-01",
+      "family": "videoboards",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "ticketing/videoboards-02",
+      "family": "videoboards",
+      "w": 1920,
+      "h": 773
+    },
+    {
+      "id": "ticketing/ticketing-01",
+      "family": "ticketing",
+      "w": 1200,
+      "h": 2100,
+      "variant": "Email"
+    },
+    {
+      "id": "ticketing/ticketing-02",
+      "family": "ticketing",
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "id": "ticketing/ticketing-03",
+      "family": "ticketing",
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "id": "ticketing/ticketing-04",
+      "family": "ticketing",
+      "w": 160,
+      "h": 600
+    },
+    {
+      "id": "ticketing/ticketing-05",
+      "family": "ticketing",
+      "w": 2400,
+      "h": 350
+    },
+    {
+      "id": "ticketing/ticketing-06",
+      "family": "ticketing",
+      "w": 300,
+      "h": 250
+    },
+    {
+      "id": "ticketing/ticketing-07",
+      "family": "ticketing",
+      "w": 300,
+      "h": 600
+    },
+    {
+      "id": "ticketing/ticketing-08",
+      "family": "ticketing",
+      "w": 320,
+      "h": 50
+    },
+    {
+      "id": "ticketing/ticketing-09",
+      "family": "ticketing",
+      "w": 728,
+      "h": 90
+    },
+    {
+      "id": "ticketing/ticketing-10",
+      "family": "ticketing",
+      "w": 970,
+      "h": 250
+    },
+    {
+      "id": "ticketing/ticketing-11",
+      "family": "ticketing",
+      "w": 970,
+      "h": 90
+    },
+    {
+      "id": "ticketing/dynamic-01",
+      "family": "dynamic",
+      "w": 160,
+      "h": 600
+    },
+    {
+      "id": "ticketing/dynamic-02",
+      "family": "dynamic",
+      "w": 300,
+      "h": 250
+    },
+    {
+      "id": "ticketing/dynamic-03",
+      "family": "dynamic",
+      "w": 300,
+      "h": 600
+    },
+    {
+      "id": "ticketing/dynamic-04",
+      "family": "dynamic",
+      "w": 320,
+      "h": 50
+    },
+    {
+      "id": "ticketing/dynamic-05",
+      "family": "dynamic",
+      "w": 728,
+      "h": 90
+    },
+    {
+      "id": "ticketing/dynamic-06",
+      "family": "dynamic",
+      "w": 970,
+      "h": 250
+    },
+    {
+      "id": "ticketing/endcards-01",
+      "family": "endcards",
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "id": "ticketing/endcards-02",
+      "family": "endcards",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "ticketing/endcards-03",
+      "family": "endcards",
+      "w": 1920,
+      "h": 773
+    },
+    {
+      "id": "ticketing/endcards-04",
+      "family": "endcards",
+      "w": 3840,
+      "h": 2160
+    },
+    {
+      "id": "ticketing/endcards-05",
+      "family": "endcards",
+      "w": 1920,
+      "h": 1080,
+      "lang": "es"
+    },
+    {
+      "id": "ticketing/endcards-06",
+      "family": "endcards",
+      "w": 1920,
+      "h": 773,
+      "lang": "es"
+    },
+    {
+      "id": "ticketing/endcards-07",
+      "family": "endcards",
+      "w": 3840,
+      "h": 2160,
+      "lang": "es"
+    },
+    {
+      "id": "ticketing/endcards-08",
+      "family": "endcards",
+      "w": 1080,
+      "h": 1920,
+      "lang": "es"
+    },
+    {
+      "id": "ticketing/social-01",
+      "family": "social",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "ticketing/social-02",
+      "family": "social",
+      "w": 1080,
+      "h": 1080,
+      "variant": "No player"
+    },
+    {
+      "id": "ticketing/social-03",
+      "family": "social",
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "id": "ticketing/social-04",
+      "family": "social",
+      "w": 1080,
+      "h": 1440
+    },
+    {
+      "id": "ticketing/social-05",
+      "family": "social",
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "id": "ticketing/social-06",
+      "family": "social",
+      "w": 1920,
+      "h": 1080,
+      "lang": "es"
+    },
+    {
+      "id": "ticketing/social-07",
+      "family": "social",
+      "w": 1080,
+      "h": 1080,
+      "lang": "es",
+      "variant": "No player"
+    },
+    {
+      "id": "ticketing/social-08",
+      "family": "social",
+      "w": 1080,
+      "h": 1080,
+      "lang": "es"
+    },
+    {
+      "id": "ticketing/social-09",
+      "family": "social",
+      "w": 1080,
+      "h": 1440,
+      "lang": "es"
+    },
+    {
+      "id": "ticketing/social-10",
+      "family": "social",
+      "w": 1080,
+      "h": 1920,
+      "lang": "es"
+    },
+    {
+      "id": "ticketing/sms-01",
+      "family": "sms",
+      "w": 1082,
+      "h": 768
+    },
+    {
+      "id": "ticketing/sms-02",
+      "family": "sms",
+      "w": 375,
+      "h": 200
+    },
+    {
+      "id": "ticketing/sms-03",
+      "family": "sms",
+      "w": 375,
+      "h": 300
+    },
+    {
+      "id": "ticketing/sms-04",
+      "family": "sms",
+      "w": 375,
+      "h": 637
+    },
+    {
+      "id": "ticketing/sms-05",
+      "family": "sms",
+      "w": 600,
+      "h": 600
+    },
+    {
+      "id": "ticketing/sms-06",
+      "family": "sms",
+      "w": 792,
+      "h": 468
+    },
+    {
+      "id": "ticketing/ooh-01",
+      "family": "ooh",
+      "w": 1400,
+      "h": 400
+    },
+    {
+      "id": "ticketing/ooh-02",
+      "family": "ooh",
+      "w": 1400,
+      "h": 400,
+      "lang": "es",
+      "variant": "No ticket link"
+    },
+    {
+      "id": "ticketing/ooh-03",
+      "family": "ooh",
+      "w": 1400,
+      "h": 400,
+      "lang": "es"
+    },
+    {
+      "id": "ticketing/print-01",
+      "family": "print",
+      "w": 2925,
+      "h": 4050
+    },
+    {
+      "id": "ticketing/partner-banner-01",
+      "family": "partner-banner",
+      "w": 600,
+      "h": 100
+    },
+    {
+      "id": "ticketing/partner-screens-01",
+      "family": "partner-screens",
+      "w": 640,
+      "h": 146
+    },
+    {
+      "id": "ticketing/split-banner-01",
+      "family": "split-banner",
+      "w": 2400,
+      "h": 800
+    },
+    {
+      "id": "ticketing/split-banner-02",
+      "family": "split-banner",
+      "w": 2400,
+      "h": 800
+    },
+    {
+      "id": "ticketing/ribbons-01",
+      "family": "ribbons",
+      "w": 408,
+      "h": 120
+    },
+    {
+      "id": "ticketing/ribbons-02",
+      "family": "ribbons",
+      "w": 4650,
+      "h": 72
+    }
+  ],
+  "totals": {
+    "deliverables": 68,
+    "sizes": 34,
+    "families": 14,
+    "layeredSources": 25
+  }
+}

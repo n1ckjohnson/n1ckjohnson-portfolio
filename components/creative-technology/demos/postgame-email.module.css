@@ -1,0 +1,94 @@
+.root {
+  position: absolute;
+  inset: 0;
+}
+
+.frame {
+  position: absolute;
+  border-radius: 0.6cqw;
+  background: #fff;
+  box-shadow:
+    0 0.2cqw 0.6cqw rgba(16, 24, 32, 0.08),
+    0 1.6cqw 4cqw -1cqw rgba(16, 24, 32, 0.2);
+}
+
+/*
+ * A module: its slices, one set per edition, stacked. Placed by its own box,
+ * moved only by transform.
+ *
+ * Neither the module nor its edition layers are promoted to compositor layers
+ * (the scene default). A promoted layer is placed on whole CSS pixels, which
+ * on a 2x or 3x screen can open a one-pixel gap between two modules whose
+ * edges were snapped to the same device pixel. Painted in place, they meet.
+ */
+.frame > .module {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  transform-origin: 50% 0;
+  will-change: auto;
+}
+
+.frame .edition {
+  position: absolute;
+  inset: 0;
+  will-change: auto;
+}
+
+/* One genuine slice, at its own native place in the email. */
+.slice {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+
+/* An empty module of the master, before the email is built into it. */
+.slot {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block: 0.4cqw;
+  border: max(1px, 0.2cqw) dashed rgba(18, 18, 18, 0.25);
+  border-radius: 0.5cqw;
+  color: #6b6b6b;
+  font-size: max(9px, 1.4cqw);
+}
+
+.side {
+  position: absolute;
+  left: 5cqw;
+  width: 44cqw;
+  padding: 1.6cqw 1.8cqw;
+  border-radius: 0.9cqw;
+  background: #fff;
+  font-size: max(9px, 1.6cqw);
+  line-height: 1.5;
+}
+
+.head {
+  margin-bottom: 0.6cqw;
+  color: #6b6b6b;
+  font-family: var(--mono);
+  font-size: max(8px, 1.4cqw);
+}
+
+/* --on: filled. --hl: being re-skinned. */
+.label {
+  --on: 0;
+  --hl: 0;
+  display: grid;
+  margin-inline: -0.8cqw;
+  padding: 0.35cqw 0.8cqw;
+  border-radius: 0.5cqw;
+  background: rgba(18, 18, 18, calc(var(--hl) * 0.06));
+  color: color-mix(in srgb, #121212 calc(45% + var(--on) * 55%), #ffffff);
+}
+
+.label > span:last-child {
+  color: #6b6b6b;
+  font-size: 0.85em;
+  opacity: calc(0.5 + var(--on) * 0.5);
+}

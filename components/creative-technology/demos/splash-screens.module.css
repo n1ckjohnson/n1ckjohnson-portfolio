@@ -1,0 +1,271 @@
+/*
+ * The splash-screen bouquet.
+ *
+ * Every card derives its place in the fan from --p (0 closed, 1 open). The
+ * fan is shown open, so --p is 1; the stage is an ordinary figure and
+ * nothing here pins or follows the scroll bar.
+ *
+ * Geometry: each card turns about a point far below it, as a hand of cards
+ * does. --o is a card's signed distance from the middle, --a its absolute
+ * distance, --theta the angle between neighbours.
+ */
+
+.track {
+  --stage-h: clamp(26rem, 74svh, 36rem);
+  position: relative;
+}
+
+.stage {
+  --p: 0;
+  --theta: 3deg;
+  /* The chosen screen's size on its own, and once the others are around it. */
+  --solo: 1.6;
+  --lead: 1.3;
+  --card-h: calc(var(--stage-h) * 0.44);
+  --card-w: calc(var(--card-h) * var(--ratio));
+  position: relative;
+  height: var(--stage-h);
+  contain: layout paint;
+}
+
+@media (min-width: 768px) {
+  /* A shorter stage with larger cards: the fan fills its figure instead of floating in it. */
+  .track {
+    --stage-h: clamp(24rem, 64svh, 32rem);
+  }
+
+  .stage {
+    --card-h: calc(var(--stage-h) * 0.62);
+    /* Week 4 alone before the spread: large, with room above and below it. */
+    --solo: 1.22;
+    --lead: 1.14;
+  }
+}
+
+.fan {
+  position: absolute;
+  inset: 0 0 3.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  --turn: calc(var(--o) * var(--theta) * var(--p));
+  --lift: 0px;
+  --grow: calc(1 - var(--a) * 0.022 * var(--p));
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: calc(100 - var(--a));
+  width: var(--card-w);
+  height: var(--card-h);
+  padding: 0;
+  border: 0;
+  border-radius: calc(var(--card-w) * 0.085);
+  background: none;
+  cursor: pointer;
+  /* The pivot sits three card-heights below the card's centre: a shallow arc. */
+  transform-origin: 50% 350%;
+  /* Size and lift are set on the screen inside, so the card's hit area never moves under the pointer. */
+  transform: rotate(var(--turn));
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Selection, hover and release are eased. */
+.settled .card {
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    z-index 0s linear calc(var(--dur-slow) * 0.35);
+}
+
+.settled .screen {
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.card:focus-visible {
+  outline-offset: 4px;
+  border-radius: calc(var(--card-w) * 0.085);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    --lift: -2.5%;
+  }
+}
+
+/*
+ * The chosen screen comes to the front. On its own it is shown large; as the
+ * others open out around it, it settles to a little above their size.
+ */
+.card[aria-checked="true"] {
+  --lift: calc(-3% * var(--p));
+  --grow: calc(var(--solo) - (var(--solo) - var(--lead)) * var(--p));
+  z-index: 200;
+  cursor: default;
+}
+
+.settled .card[aria-checked="true"] {
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    z-index 0s;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  transform: translateY(var(--lift)) scale(var(--grow));
+  background: #e9e9e9;
+  /* Shadows arrive as the bouquet opens, so a closed stack does not pile them up. */
+  box-shadow:
+    0 0 0 0.5px rgba(18, 18, 18, calc(0.14 * var(--p))),
+    0 2px 4px rgba(18, 18, 18, calc(0.06 * var(--p))),
+    0 18px 36px -18px rgba(18, 18, 18, calc(0.4 * var(--p)));
+}
+
+.card[aria-checked="true"] .screen {
+  box-shadow:
+    0 0 0 0.5px rgba(18, 18, 18, 0.14),
+    0 2px 4px rgba(18, 18, 18, 0.06),
+    0 24px 48px -22px rgba(18, 18, 18, 0.45);
+}
+
+/* The others step back a little once one is chosen. */
+.screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--surface);
+  opacity: calc(0.14 * var(--p));
+  transition: opacity var(--dur-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.card[aria-checked="true"] .screen::after,
+.card:hover .screen::after {
+  opacity: 0;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.layer[data-hidden="true"] {
+  opacity: 0;
+}
+
+.lottie {
+  position: absolute;
+  inset: 0;
+}
+
+.lottie > svg {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* The line under the fan: which game, and a way to play it again. */
+.bar {
+  position: absolute;
+  z-index: 300;
+  inset: auto 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  height: 3.5rem;
+  padding-inline: 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+.name {
+  min-width: 8.5rem;
+  overflow: hidden;
+  color: var(--ink);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Step to the neighbouring version without having to hit a narrow edge. */
+.step {
+  display: grid;
+  place-items: center;
+  /* A full 44px target. */
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  color: var(--ink-2);
+  transition:
+    color var(--dur-quick) var(--ease-out),
+    background-color var(--dur-quick) var(--ease-out);
+}
+
+.step:hover {
+  background: rgba(18, 18, 18, 0.06);
+  color: var(--ink);
+}
+
+.step:disabled {
+  color: var(--ink-3);
+  background: none;
+  cursor: default;
+}
+
+.step:focus-visible {
+  border-radius: 50%;
+}
+
+@media (pointer: coarse) {
+  .step {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+/* Less motion: the bouquet is simply open, and nothing is tied to scroll. */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    height: auto;
+  }
+
+  .stage {
+    position: relative;
+    top: auto;
+  }
+}
+
+/* Reduced motion only: nothing plays until asked. Sits quietly above the fan. */
+.replay {
+  position: absolute;
+  z-index: 300;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.375rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.06);
+  color: var(--ink);
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  transition: background-color var(--dur-quick) var(--ease-out);
+}
+
+.replay:hover {
+  background: rgba(18, 18, 18, 0.1);
+}
+
+.replay:disabled {
+  color: var(--ink-2);
+}

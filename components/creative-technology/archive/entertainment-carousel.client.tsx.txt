@@ -1,0 +1,71 @@
+"use client";
+
+import { useState } from "react";
+import type { Media } from "@/lib/creative-technology/media";
+import { Plate } from "@/components/creative-technology/ui/plate";
+import { Segmented } from "@/components/creative-technology/ui/segmented";
+import { preload } from "@/components/creative-technology/ui/swap";
+import { Caption } from "@/components/creative-technology/ui/media";
+
+export type Axis = { key: string; label: string; note: string };
+
+/**
+ * Two of the three things the architecture keeps apart, as two controls:
+ * the layout of a slide and the theme it wears. Each combination shows the
+ * finished slide. A combination that was never produced is switched off,
+ * not filled in.
+ */
+export function CarouselMatrix({
+  layouts,
+  themes,
+  finished,
+  status,
+}: {
+  layouts: Axis[];
+  themes: Axis[];
+  /** Finished slides, keyed "theme/layout". */
+  finished: Record<string, Media>;
+  /** One sentence on how far the automation has got. */
+  status: string;
+}) {
+  const first = Object.keys(finished)[0].split("/");
+  const [theme, setTheme] = useState(first[0]);
+  const [layout, setLayout] = useState(first[1]);
+
+  const slide = finished[`${theme}/${layout}`] ?? Object.values(finished)[0];
+  const themeAxis = themes.find((candidate) => candidate.key === theme);
+  const layoutAxis = layouts.find((candidate) => candidate.key === layout);
+
+  // A combination with no finished slide cannot be chosen: its option is switched off.
+  const made = (themeKey: string, layoutKey: string) => Boolean(finished[`${themeKey}/${layoutKey}`]);
+
+  return (
+    <>
+      <Plate media={slide} eager />
+
+      <div className="controls">
+        <Segmented
+          label="Layout"
+          value={layout}
+          onChange={setLayout}
+          onPeek={(key) => preload(finished[`${theme}/${key}`])}
+          options={layouts.map((candidate) => ({ key: candidate.key, label: candidate.label, disabled: !made(theme, candidate.key) }))}
+        />
+        <Segmented
+          label="Theme"
+          value={theme}
+          onChange={setTheme}
+          onPeek={(key) => preload(finished[`${key}/${layout}`])}
+          options={themes.map((candidate) => ({ key: candidate.key, label: candidate.label, disabled: !made(candidate.key, layout) }))}
+        />
+      </div>
+
+      <Caption className="min-h-10">
+        <span aria-live="polite">
+          {layoutAxis?.label} layout, {themeAxis?.label.toLowerCase()} theme. {layoutAxis?.note}
+        </span>{" "}
+        {status}
+      </Caption>
+    </>
+  );
+}

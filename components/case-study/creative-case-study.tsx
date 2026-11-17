@@ -3,11 +3,12 @@ import { CREATIVE_LAYOUTS, DEFAULT_LAYOUT } from "@/content/creative-layouts";
 import { findMedia, mediaItem, workDir } from "@/lib/media";
 import { Media } from "@/components/media/media";
 import { MediaBlockView } from "@/components/case-study/media-block";
-import { CaseHeader, CaseSection, FlowSequence, NumberedList, Prose } from "@/components/case-study/parts";
+import { CaseHeader, CaseSection, FlowSequence, PlainList, Prose } from "@/components/case-study/parts";
 
 /**
- * Template for the original creative case studies. Content comes straight
- * from content/projects.ts; media arrangement from content/creative-layouts.ts.
+ * Template for the design case studies. Content comes straight from
+ * content/projects.ts; media arrangement from content/creative-layouts.ts.
+ * Text keeps to the reading column. Media may use the wider stage.
  */
 export function CreativeCaseStudy({ project, label }: { project: Project; label: string }) {
   const { slug, title } = project;
@@ -22,15 +23,15 @@ export function CreativeCaseStudy({ project, label }: { project: Project; label:
         summary={project.summary}
         meta={[
           { term: "Role", detail: project.role },
-          { term: "Collaborators", detail: project.collaborators },
+          { term: "With", detail: project.collaborators },
           { term: "Channels", detail: project.channels },
         ].filter((item) => item.detail)}
       />
 
       {hero ? (
-        <div className="page mt-10 sm:mt-14">
-          <div className="overflow-hidden rounded-[4px] bg-surface">
-            <Media item={hero} alt={project.heroMedia?.alt ?? `${title} — hero`} priority />
+        <div className="wide mt-10 sm:mt-12">
+          <div className="overflow-hidden rounded-stage bg-surface">
+            <Media item={hero} alt={project.heroMedia?.alt ?? `${title}, lead image`} sizes="(min-width: 1008px) 960px, 100vw" priority />
           </div>
         </div>
       ) : null}
@@ -43,7 +44,7 @@ export function CreativeCaseStudy({ project, label }: { project: Project; label:
 
       {project.decisions.length > 0 ? (
         <CaseSection label="Decisions">
-          <NumberedList items={project.decisions} />
+          <PlainList items={project.decisions} />
         </CaseSection>
       ) : null}
 

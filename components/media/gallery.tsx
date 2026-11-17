@@ -23,8 +23,8 @@ const GRID = {
 };
 
 const SIZES = {
-  3: "(min-width: 1216px) 384px, (min-width: 640px) 33vw, 50vw",
-  4: "(min-width: 1216px) 288px, (min-width: 640px) 25vw, 50vw",
+  3: "(min-width: 1008px) 312px, (min-width: 640px) 33vw, 50vw",
+  4: "(min-width: 1008px) 232px, (min-width: 640px) 25vw, 50vw",
 };
 
 /**
@@ -79,20 +79,20 @@ export function Gallery({ title, groups, columns }: GalleryProps) {
 
   return (
     <>
-      <div className="space-y-10 sm:space-y-14">
+      <div className="space-y-10 sm:space-y-12">
         {groups.map((group, g) => {
           const start = starts[g];
           return (
             <div key={group.label ?? start}>
-              {group.label ? <p className="mb-4 text-label font-medium text-ink-2">{group.label}</p> : null}
+              {group.label ? <p className="mb-3 text-small text-ink-2">{group.label}</p> : null}
               <ul className={cn("grid items-start gap-2 sm:gap-3", GRID[columns])}>
                 {group.items.map((item, i) => (
                   <li key={item.src}>
                     <button
                       type="button"
                       onClick={(event) => open(start + i, event.currentTarget)}
-                      aria-label={`View ${title} — image ${start + i + 1} of ${total}`}
-                      className="group block w-full cursor-zoom-in overflow-hidden rounded-[3px] bg-surface"
+                      aria-label={`View ${title}, image ${start + i + 1} of ${total}`}
+                      className="group block w-full cursor-zoom-in overflow-hidden rounded-s bg-surface"
                     >
                       <RevealImage
                         src={item.src}
@@ -114,7 +114,7 @@ export function Gallery({ title, groups, columns }: GalleryProps) {
 
       <dialog
         ref={dialogRef}
-        aria-label={`${title} — image viewer`}
+        aria-label={`${title}, image viewer`}
         className="lightbox"
         onCancel={(event) => {
           event.preventDefault();
@@ -142,23 +142,23 @@ export function Gallery({ title, groups, columns }: GalleryProps) {
       >
         {current ? (
           <div className="flex h-full w-full flex-col" onClick={(event) => event.target === event.currentTarget && close()}>
-            <div className="flex items-center justify-between px-gutter py-4 text-small">
+            <div className="flex items-center justify-between px-6 py-4 text-small">
               <p className="tabular-nums text-ink-2" aria-live="polite">
-                {index! + 1} <span className="text-ink-3">/ {total}</span>
+                {index! + 1} <span className="text-ink-2">/ {total}</span>
                 {current.label ? <span className="ml-3 hidden text-ink-2 sm:inline">{current.label}</span> : null}
               </p>
-              <button type="button" onClick={close} className="pressable -mr-2 rounded-full px-2 py-1 font-medium text-ink hover:text-ink-2">
+              <button type="button" onClick={close} className="pressable -mr-2 rounded-full px-2 py-1 text-ink hover:text-ink-2">
                 Close
               </button>
             </div>
 
             <div className="relative min-h-0 flex-1" onClick={(event) => event.target === event.currentTarget && close()}>
               {/* Sized by the viewport, not the file: fill + contain */}
-              <div className="absolute inset-x-gutter bottom-6 top-0 sm:inset-x-16">
+              <div className="absolute inset-x-6 bottom-6 top-0 sm:inset-x-16">
                 <Image
                   key={current.item.src}
                   src={current.item.src}
-                  alt={`${title} — image ${index! + 1} of ${total}`}
+                  alt={`${title}, image ${index! + 1} of ${total}`}
                   fill
                   sizes="100vw"
                   quality={85}

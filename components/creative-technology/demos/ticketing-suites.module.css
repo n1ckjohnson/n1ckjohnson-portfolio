@@ -1,0 +1,324 @@
+/*
+ * The ticketing fan-out.
+ *
+ * Every placement is laid out at its final position in the suite. The three
+ * states (one creative, the suite, one placement in focus) only change each
+ * piece's transform and opacity, so the browser animates between them on the
+ * compositor and the box never changes size.
+ *
+ * Two arrangements are solved on the server: a wide one and a narrow one.
+ * Each piece carries both as custom properties (--w-* and --n-*) and the
+ * media query below picks one. --tx/--ty/--s move a piece to the centre of
+ * the box and scale it to fill it: that one transform is used both for the
+ * opening creative and for a placement in focus.
+ */
+
+/* The figure scrolls with the page: nothing here pins. */
+.pin {
+  position: relative;
+}
+
+.stage {
+  padding: 0.75rem;
+}
+
+@media (min-width: 600px) {
+  .stage {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .stage {
+    padding: 2.5rem;
+  }
+}
+
+.box {
+  position: relative;
+  max-width: 23rem;
+  margin-inline: auto;
+  aspect-ratio: var(--n-ratio);
+}
+
+.piece {
+  --x: var(--n-x);
+  --y: var(--n-y);
+  --w: var(--n-w);
+  --h: var(--n-h);
+  --tx: var(--n-tx);
+  --ty: var(--n-ty);
+  --s: var(--n-s);
+  position: absolute;
+  left: calc(var(--x) * 100%);
+  top: calc(var(--y) * 100%);
+  width: calc(var(--w) * 100%);
+  height: calc(var(--h) * 100%);
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  cursor: zoom-in;
+  transform-origin: 50% 50%;
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    opacity var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    visibility 0s;
+  box-shadow:
+    0 0 0 0.5px rgba(18, 18, 18, 0.1),
+    0 1px 2px rgba(18, 18, 18, 0.05),
+    0 8px 20px -12px rgba(18, 18, 18, 0.25);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* A placement drawn as an outline, where its creative may not be shown. */
+.blank {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  background: #fff;
+  color: var(--ink-2);
+  font-size: 0.6875rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  container-type: size;
+}
+
+/* The size is written inside the outline only where it fits. */
+@container (max-width: 4.75rem) or (max-height: 1.125rem) {
+  .blank > span {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  .box {
+    max-width: none;
+    aspect-ratio: var(--w-ratio);
+  }
+
+  .piece {
+    --x: var(--w-x);
+    --y: var(--w-y);
+    --w: var(--w-w);
+    --h: var(--w-h);
+    --tx: var(--w-tx);
+    --ty: var(--w-ty);
+    --s: var(--w-s);
+  }
+}
+
+.piece > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+/*
+ * Further looks, laid over the first in order. A look is on when the stage
+ * has reached it; every piece crossfades at the same moment, so one
+ * campaign becomes the next across the whole suite.
+ */
+.piece > img.alt {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 900ms var(--ease-in-out);
+}
+
+.piece > img.alt[data-on] {
+  opacity: 1;
+}
+
+.looks {
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.piece:focus-visible {
+  outline-offset: 3px;
+}
+
+/* ── From one creative to the suite ──────────────────────────────── */
+
+/*
+ * Two states. Closed, the original creative fills the box and nothing else
+ * shows. Opening is one movement, timed to be watched: the creative settles
+ * into its seat while every other piece rises out from just behind it into
+ * its own seat, all together. Each piece starts a little way towards the
+ * centre (12% of its distance), enough to read as the suite growing out of
+ * the creative, never so far that two pieces cross.
+ */
+.piece {
+  opacity: 0;
+  transform: translate(calc(var(--tx) * 0.12), calc(var(--ty) * 0.12)) scale(0.94);
+  transition:
+    transform 520ms var(--ease-in-out),
+    opacity 380ms var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.box[data-open] .piece {
+  opacity: 1;
+  transform: none;
+  transition:
+    transform 1150ms var(--ease-out) 420ms,
+    opacity 900ms var(--ease-out) 420ms,
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* The creative everything comes from: full size when closed, never hidden. */
+.box .piece[data-source] {
+  z-index: 2;
+  opacity: 1;
+  transform: translate(var(--tx), var(--ty)) scale(var(--s));
+  transition:
+    transform 1300ms var(--ease-in-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.box[data-open] .piece[data-source] {
+  transform: none;
+  transition:
+    transform 1300ms var(--ease-in-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* Choosing and releasing a placement is quicker than opening the suite. */
+.box[data-easing] .piece {
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    opacity var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .box[data-open]:not([data-focus]) .piece:hover {
+    transform: scale(1.025);
+    z-index: 3;
+    transition: transform var(--dur-quick) var(--ease-out);
+  }
+}
+
+/* ── One placement in focus ───────────────────────────────────────── */
+
+.box[data-focus] .piece {
+  opacity: 0.14;
+}
+
+.box[data-focus] .piece[data-focused] {
+  z-index: 5;
+  opacity: 1;
+  transform: translate(var(--tx), var(--ty)) scale(var(--s));
+  cursor: zoom-out;
+  box-shadow:
+    0 0 0 0.5px rgba(18, 18, 18, 0.1),
+    0 2px 4px rgba(18, 18, 18, 0.05),
+    0 22px 44px -22px rgba(18, 18, 18, 0.32);
+}
+
+/* A click anywhere off the focused piece puts it back. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border: 0;
+  background: none;
+  cursor: zoom-out;
+}
+
+/* ── Readout ──────────────────────────────────────────────────────── */
+
+.readout {
+  min-height: 1.25rem;
+  margin-top: 0.875rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+/* A suite with per-format contents or campaign looks: a title over up to three lines of elements. */
+.readout[data-detailed] {
+  min-height: 5.75rem;
+}
+
+@media (min-width: 600px) {
+  .readout[data-detailed] {
+    min-height: 4.25rem;
+  }
+}
+
+/* The campaign's name: quieter than the artwork above it. */
+.readout__look {
+  color: var(--ink-2);
+}
+
+.readout__title {
+  color: var(--ink);
+}
+
+.readout__title span {
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.elements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.125rem 0.875rem;
+  max-width: 34rem;
+  margin: 0.375rem auto 0;
+}
+
+.elements li {
+  color: var(--ink);
+}
+
+/* Left out of this format: struck through, and still dark enough to read. */
+.elements li[data-dropped] {
+  color: var(--ink-2);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--ink-3);
+}
+
+.readout__note {
+  max-width: 30rem;
+  margin: 0 auto;
+  color: var(--ink-2);
+  text-wrap: balance;
+}
+
+.readout__note[data-hidden] {
+  visibility: hidden;
+}
+
+/* ── English and Spanish ──────────────────────────────────────────── */
+
+.pair {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+
+@media (min-width: 600px) {
+  .pair {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .pair {
+    padding: 2.5rem;
+  }
+}

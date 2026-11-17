@@ -1,0 +1,60 @@
+.root {
+  position: absolute;
+  inset: 0;
+}
+
+/* The graphic being built. Every layer is a full-canvas PNG from the PSD. */
+.frame {
+  position: absolute;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 0.8cqw;
+  background: #fff;
+  box-shadow: 0 0.4cqw 2cqw rgba(18, 18, 18, 0.1);
+  transform-origin: 0 0;
+  cursor: default;
+}
+
+.root[data-batch] .frame,
+.cell {
+  cursor: zoom-in;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+
+/* The signature writes itself in from the left. */
+.layer[data-layer="signature"] {
+  --reveal: 0;
+  clip-path: inset(0 calc(100% - var(--reveal) * 1%) 0 0);
+}
+
+.layer[data-layer="title"] {
+  transform: translateX(-36%);
+}
+
+.cell {
+  position: absolute;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 0.6cqw;
+  background: #fff;
+  box-shadow: 0 0.3cqw 1.2cqw rgba(18, 18, 18, 0.08);
+  transition: box-shadow var(--dur-quick) var(--ease-out);
+}
+
+.cell img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.root[data-batch] .frame:hover,
+.cell:hover {
+  box-shadow: 0 0.5cqw 2cqw rgba(18, 18, 18, 0.16);
+}

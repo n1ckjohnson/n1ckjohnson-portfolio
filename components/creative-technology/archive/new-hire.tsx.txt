@@ -1,0 +1,55 @@
+import type { NewHireDemo as Config } from "@/content/creative-technology/projects/new-hire";
+import type { DemoProps } from "@/components/creative-technology/demos/types";
+import { Caption, Withheld, image } from "@/components/creative-technology/ui/media";
+import { Picker, type PickerItem } from "@/components/creative-technology/demos/picker.client";
+import { Normalizer } from "@/components/creative-technology/demos/new-hire.client";
+
+/**
+ * New hire / new title. Output the system rendered from synthetic test
+ * cards and fictional names: no employee appears anywhere on this page.
+ * The three examples each show a different typography case.
+ */
+export function NewHireDemo({ project, media }: DemoProps<Config>) {
+  const items: PickerItem[] = project.demo.certified.flatMap((example) => {
+    const graphic = image(media, example.graphic);
+    if (!graphic) return [];
+    return [
+      {
+        key: example.graphic,
+        label: example.shows.split(",")[0],
+        media: graphic,
+        caption: `${example.shows}. Rendered by the system from a synthetic test card and a fictional name: ${example.name}, ${example.title}.`,
+        tag: "Illustrative",
+      },
+    ];
+  });
+
+  if (!items.length) {
+    return (
+      <Withheld>
+        The sample output carries team and stadium artwork, so it is held back until it is cleared for publication. The
+        model below shows what the system does to every headshot. It uses no photographs and no real names.
+      </Withheld>
+    );
+  }
+
+  return (
+    <figure className="wide">
+      <Picker label="Typography case" items={items} height="24rem" heightWide="33rem" />
+    </figure>
+  );
+}
+
+/** What normalization does to a batch, as a model: no photographs, no names. */
+export function NewHireEvidence({ project }: DemoProps<Config>) {
+  const { batch, guarantees } = project.demo;
+  return (
+    <figure className="col spaced">
+      <Normalizer batch={batch} />
+      <Caption label="Illustrative model">
+        Each tile stands for one headshot: the ring is the face and the line is the eyes. {guarantees.map((guarantee) => guarantee.detail).join(" ")}{" "}
+        A photograph the system is not sure about is set aside, not guessed.
+      </Caption>
+    </figure>
+  );
+}

@@ -1,0 +1,70 @@
+.root {
+  position: absolute;
+  inset: 0;
+}
+
+.hero,
+.piece {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 0.6cqw;
+  background: #fff;
+  box-shadow: 0 0.3cqw 1.6cqw rgba(18, 18, 18, 0.1);
+}
+
+.hero {
+  z-index: 1;
+}
+
+/* The camera inside the 16:9: moved and scaled by the timeline. */
+.cam {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+}
+
+/* The 16:9 that travels to its seat in the suite scales from its corner. */
+.heroMoves {
+  transform-origin: 0 0;
+}
+
+/* The places the Spanish version differs, outlined and named. */
+.rings {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ring {
+  position: absolute;
+  border: max(1px, 0.22cqw) dashed rgba(255, 255, 255, 0.95);
+  border-radius: 0.5cqw;
+  outline: max(1px, 0.22cqw) solid rgba(0, 0, 0, 0.14);
+}
+
+.tag {
+  position: absolute;
+  left: -0.25cqw;
+  bottom: calc(100% + 0.6cqw);
+  padding: 0.15cqw 0.7cqw;
+  border-radius: 0.4cqw;
+  background: #121212;
+  color: #fff;
+  font-size: max(9px, 1.4cqw);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.img,
+.piece img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* A region at the top edge is named underneath, where there is room. */
+.tag[data-below] {
+  top: calc(100% + 0.6cqw);
+  bottom: auto;
+}

@@ -9,3 +9,9 @@ yarn-error.log*
 .DS_Store
 *.tsbuildinfo
 public/work-backup
+# Creative Technology experience
+# Media not approved for publication, private source map, internal build output
+media-internal
+.next-internal
+# Visual QA captures (scripts/qa)
+.qa

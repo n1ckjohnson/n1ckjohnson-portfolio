@@ -1,0 +1,110 @@
+import type { Project } from "@/content/creative-technology/types";
+
+export type CarouselDemo = {
+  /** The three things the architecture keeps apart. */
+  axes: { key: "layout" | "theme" | "content"; label: string; question: string; options: { key: string; label: string; note: string }[] }[];
+  /** Slide layouts, as artboards. */
+  slides: { key: string; label: string; blocks: number }[];
+  /** Finished slides, by theme and slide, for the internal build. */
+  finished: { theme: string; slide: string; graphic: string }[];
+  built: string[];
+  planned: string[];
+};
+
+export const entertainmentCarousel: Project<CarouselDemo> = {
+  id: "entertainment-carousel",
+  slug: "entertainment-carousel",
+  order: 10,
+  title: "Game day entertainment carousel",
+  kind: "Versioning architecture",
+  blurb: "Layout, theme and weekly content kept apart.",
+  year: "2026",
+  summary:
+    "The production architecture for recurring home-game entertainment carousels. It separates approved layouts, visual themes and weekly content so each game can be versioned without rebuilding the carousel from scratch.",
+  line: "I designed a production architecture that keeps layout, theme and weekly content apart for the home-game entertainment carousel.",
+  status: "architecture",
+  statusNote: {
+    text: "One-time scripted versioning passes were run for five 2026 games. The reusable generator is designed, not built.",
+    basis: "evidence",
+    tier: "internal",
+  },
+  stack: ["Photoshop artboards", "Smart Objects", "Structured content model", "Planned JavaScript / UXP automation"],
+  automated: [
+    "Planned: populating every slide from one weekly content file",
+    "Planned: switching theme without touching layout or content",
+  ],
+  designerControlled: [
+    "The slide layouts and each theme",
+    "Weekly content and photography",
+    "Finishing every carousel, today",
+  ],
+  detail: [
+    "A carousel is four slides: a cover, pregame recognition, the fan entertainment zone and in-game moments. Every home game needs the same structure with different content, and themed games need a different look.",
+    "The architecture names every weekly text field and image target, and keeps theme styling in its own layer of the file. That contract is a draft: it defines the system and has not yet been applied to the master.",
+    "What exists today is the audit of the master, the draft contract, and per-game scripted passes that proved the approach on real carousels. The single weekly command is the planned next step.",
+  ],
+  pipeline: [
+    { label: "Layout", detail: "Four approved artboards with named targets." },
+    { label: "Theme", detail: "A skin applied without moving anything." },
+    { label: "Content", detail: "One weekly file of text and image references." },
+    { label: "Build", detail: "Planned: a single command populates all four slides." },
+  ],
+  facts: [
+    { text: "Four slides per carousel, each 2160 × 2880.", basis: "evidence" },
+    { text: "The draft contract defines 19 weekly text fields and 8 image targets.", basis: "evidence" },
+    { text: "Themes produced in 2026: Home Opener, Throwback and Rivalries.", basis: "evidence" },
+    { text: "The reusable generator and the theme layer system are planned. They are not built.", basis: "evidence" },
+    { text: "Per-game scripted passes were written and run for five games, each starting from the previous game's finished file and ending with designer polish.", basis: "evidence", tier: "internal" },
+  ],
+  mediaPrefix: "carousel/",
+  interaction: "entertainment-carousel",
+  demo: {
+    axes: [
+      {
+        key: "layout",
+        label: "Layout",
+        question: "Where things go",
+        options: [
+          { key: "cover", label: "Cover", note: "Title, matchup line and one hero image." },
+          { key: "zone", label: "Fan zone", note: "Gate times, schedule and a set of feature cards." },
+          { key: "ingame", label: "In-game", note: "A grid of named moments." },
+        ],
+      },
+      {
+        key: "theme",
+        label: "Theme",
+        question: "How it looks",
+        options: [
+          { key: "standard", label: "Standard", note: "The season look." },
+          { key: "throwback", label: "Throwback", note: "A themed game skin." },
+          { key: "rivalries", label: "Rivalries", note: "A themed game skin." },
+        ],
+      },
+      {
+        key: "content",
+        label: "Content",
+        question: "What it says this week",
+        options: [
+          { key: "a", label: "Game A", note: "Sample content set A." },
+          { key: "b", label: "Game B", note: "Sample content set B." },
+        ],
+      },
+    ],
+    slides: [
+      { key: "cover", label: "Cover", blocks: 1 },
+      { key: "recognition", label: "Recognition", blocks: 2 },
+      { key: "zone", label: "Fan zone", blocks: 6 },
+      { key: "ingame", label: "In-game", blocks: 4 },
+    ],
+    finished: [
+      { theme: "standard", slide: "cover", graphic: "carousel/pw2-cover" },
+      { theme: "throwback", slide: "cover", graphic: "carousel/w3-cover" },
+      { theme: "throwback", slide: "zone", graphic: "carousel/w3-zone" },
+      { theme: "rivalries", slide: "cover", graphic: "carousel/w8-cover" },
+      { theme: "rivalries", slide: "zone", graphic: "carousel/w8-zone" },
+    ],
+    built: ["Audit of the master file", "Draft automation contract", "Per-game scripted passes"],
+    planned: ["Reusable generator", "Theme layer system", "Single weekly command"],
+  },
+  publication: { copy: "approved", note: "Copy supplied by the owner. Status kept at architecture designed." },
+};

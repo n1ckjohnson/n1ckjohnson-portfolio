@@ -1,0 +1,92 @@
+// Archived on 2026-11-14: no longer part of the Creative Technology portfolio.
+// Kept for reference only. The .txt suffix keeps it out of the build; it still
+// uses the earlier content model. Its one media entry stays in media.json.
+import type { Project } from "@/content/creative-technology/types";
+
+export type MediaDayDemo = {
+  /** Named parts of a correction profile. Parameter names only. */
+  profile: { group: string; params: string[] }[];
+  /** Why a frame is sent to a person instead of being finished automatically. */
+  reviewReasons: string[];
+  /** Fictional batch for the illustrative routing model. */
+  frames: { session: string; board: string; route: "auto" | "review"; reason?: string }[];
+  reviewSheet: string;
+};
+
+export const mediaDayPhotography: Project<MediaDayDemo> = {
+  id: "media-day-photography",
+  order: 10,
+  group: "additional",
+  title: "LED / Media Day photography",
+  accent: "photography",
+  category: "Photo processing system",
+  summary:
+    "Developing a Lightroom Classic workflow for large LED and Media Day photo batches. It is intended to apply controlled correction profiles, organise image groups and route uncertain results to a person for review.",
+  line: "A Lightroom Classic workflow, in development, that applies controlled corrections to large LED and Media Day photo batches.",
+  status: "in-development",
+  statusNote: {
+    text: "A full LED batch has been processed and reviewed in a working catalog. Full-resolution export and some background boards remain open.",
+    basis: "evidence",
+    tier: "internal",
+  },
+  stack: ["Lightroom Classic SDK", "Lua", "Configuration-driven correction profiles", "Metadata and session grouping", "Automated review routing"],
+  automated: [
+    "Grouping frames into sessions",
+    "Mapping each session to its LED background",
+    "Applying that background's correction profile",
+    "Flagging frames that fall outside expected ranges",
+  ],
+  designerControlled: [
+    "Every correction profile and its values",
+    "All frames routed to review",
+    "Approval of the finished batch",
+  ],
+  detail: [
+    "LED-wall portraits change with the board behind the subject. Each background gets its own correction profile: global tone, a small set of colour adjustments and review thresholds, all held in configuration rather than code.",
+    "The workflow groups a shoot into sessions, works out which board each session used, and applies that profile on top of a controlled tone pass.",
+    "It is designed to hand over when it is unsure. A frame that does not match its session, has no board mapping or lands outside the expected exposure range goes to a review queue with the reason attached.",
+  ],
+  pipeline: [
+    { label: "Import", detail: "A batch enters a Lightroom Classic catalog." },
+    { label: "Sessions", detail: "Frames are grouped by capture metadata." },
+    { label: "Board", detail: "Each session is mapped to its LED background." },
+    { label: "Tone", detail: "A controlled tone pass with an exposure floor." },
+    { label: "Profile", detail: "The board's global and colour settings are applied." },
+    { label: "Route", detail: "Finished automatically, or sent to review with a reason." },
+  ],
+  facts: [
+    { text: "Corrections live in configuration files, one profile per LED background.", basis: "evidence" },
+    { text: "Every review decision carries a reason code, so a person knows why a frame was flagged.", basis: "evidence" },
+    { text: "No before-and-after comparison is shown here: a properly matched full-resolution pair is not available.", basis: "evidence" },
+    { text: "August 2026: 1,100 photographs from one LED batch were processed and approved in the working catalog.", basis: "evidence", tier: "internal" },
+    { text: "Pilot results: 24 of 24 frames approved in the integrated pilot; 36 unseen frames gave 26 approved and 10 flagged.", basis: "evidence", tier: "internal" },
+    { text: "Ten board profiles exist. One board has no coverage and three carry open notes.", basis: "evidence", tier: "internal" },
+  ],
+  mediaPrefix: "media-day/",
+  chapter: "media-day-photography",
+  demo: {
+    profile: [
+      { group: "Identity", params: ["board", "background family", "LED brightness"] },
+      { group: "Global", params: ["temperature", "tint", "exposure", "highlights", "shadows", "whites", "blacks"] },
+      { group: "Colour", params: ["aqua hue", "blue hue", "green hue", "aqua saturation", "aqua luminance"] },
+      { group: "Review flags", params: ["highlight clip", "shadow crush", "asymmetric lighting"] },
+    ],
+    reviewReasons: ["Does not match its session", "No board mapping", "Correction failed", "Settings unreadable", "Outside expected range"],
+    frames: [
+      { session: "A", board: "Board 01", route: "auto" },
+      { session: "A", board: "Board 01", route: "auto" },
+      { session: "A", board: "Board 01", route: "review", reason: "Outside expected range" },
+      { session: "A", board: "Board 01", route: "auto" },
+      { session: "B", board: "Board 04", route: "auto" },
+      { session: "B", board: "Board 04", route: "auto" },
+      { session: "B", board: "Board 04", route: "auto" },
+      { session: "B", board: "Board 04", route: "review", reason: "Does not match its session" },
+      { session: "C", board: "Board 07", route: "auto" },
+      { session: "C", board: "Board 07", route: "auto" },
+      { session: "C", board: "Unmapped", route: "review", reason: "No board mapping" },
+      { session: "C", board: "Board 07", route: "auto" },
+    ],
+    reviewSheet: "media-day/pilot-review-sheet",
+  },
+  publication: { copy: "approved", note: "Status kept at in development, as the owner specified." },
+};

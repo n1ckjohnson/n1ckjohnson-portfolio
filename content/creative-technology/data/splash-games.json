@@ -1,0 +1,138 @@
+[
+  {
+    "key": "pw2-car",
+    "wk": "PW2",
+    "rel": "VS",
+    "opp": "CAR",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "pw3-tb",
+    "wk": "PW3",
+    "rel": "VS",
+    "opp": "TB",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w10-ten",
+    "wk": "W10",
+    "rel": "AT",
+    "opp": "TEN",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w11-nyg",
+    "wk": "W11",
+    "rel": "AT",
+    "opp": "NYG",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w12-ten",
+    "wk": "W12",
+    "rel": "VS",
+    "opp": "TEN",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w13-chi",
+    "wk": "W13",
+    "rel": "AT",
+    "opp": "CHI",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w15-hou",
+    "wk": "W15",
+    "rel": "AT",
+    "opp": "HOU",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w16-dal",
+    "wk": "W16",
+    "rel": "AT",
+    "opp": "DAL",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w01-cle",
+    "wk": "W1",
+    "rel": "VS",
+    "opp": "CLE",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w02-den",
+    "wk": "W2",
+    "rel": "AT",
+    "opp": "DEN",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w04-cin",
+    "wk": "W4",
+    "rel": "AT",
+    "opp": "CIN",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w05-phi",
+    "wk": "W5",
+    "rel": "VS",
+    "opp": "PHI",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w06-hou",
+    "wk": "W6",
+    "rel": "VS",
+    "opp": "HOU",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w08-ind",
+    "wk": "W8",
+    "rel": "VS",
+    "opp": "IND",
+    "edition": null,
+    "background": "rivalries"
+  },
+  {
+    "key": "w09-bal-night-a",
+    "wk": "W9",
+    "rel": "AT",
+    "opp": "BAL",
+    "edition": "NIGHT_A",
+    "background": "dark"
+  },
+  {
+    "key": "w09-bal",
+    "wk": "W9",
+    "rel": "AT",
+    "opp": "BAL",
+    "edition": null,
+    "background": "standard"
+  },
+  {
+    "key": "w09-bal-night-b",
+    "wk": "W9",
+    "rel": "AT",
+    "opp": "BAL",
+    "edition": "NIGHT_B",
+    "background": "dark"
+  }
+]

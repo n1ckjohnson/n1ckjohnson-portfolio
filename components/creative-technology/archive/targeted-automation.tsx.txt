@@ -1,0 +1,40 @@
+import type { TargetedDemo } from "@/content/creative-technology/projects/targeted-automation";
+import type { DemoProps } from "@/components/creative-technology/demos/types";
+import { Caption, Shot, image, provenanceLabel } from "@/components/creative-technology/ui/media";
+
+/**
+ * Targeted automation. A short list, not a gallery: each tool gets its name,
+ * one sentence and, where there is something real to show, one artefact.
+ * A tool with nothing to show is described and left at that.
+ */
+export function TargetedAutomationDemo({ project, media }: DemoProps<TargetedDemo>) {
+  const { tools, alsoApplied } = project.demo;
+
+  return (
+    <div className="col">
+      <ul className="border-t border-line">
+        {tools.map((tool) => {
+          const artefact = image(media, tool.artefact);
+          const tall = artefact ? artefact.height > artefact.width : false;
+          return (
+            <li key={tool.key} className="border-b border-line py-6">
+              <h2 className="text-ink">{tool.name}</h2>
+              <p className="mt-1 text-ink-2">{tool.what}</p>
+              {artefact ? (
+                <figure className="mt-5">
+                  <div className="stage p-3 sm:p-6">
+                    <Shot media={artefact} lift className={tall ? "mx-auto max-w-[15rem]" : undefined} />
+                  </div>
+                  <Caption label={provenanceLabel(artefact)}>{tool.artefactCaption}.</Caption>
+                </figure>
+              ) : null}
+            </li>
+          );
+        })}
+      </ul>
+      {alsoApplied.length ? (
+        <p className="mt-6 text-ink-2">The same approach has also been applied to {alsoApplied.join(" and ").toLowerCase()}.</p>
+      ) : null}
+    </div>
+  );
+}

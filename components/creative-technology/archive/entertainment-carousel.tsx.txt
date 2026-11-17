@@ -1,0 +1,53 @@
+import type { CarouselDemo } from "@/content/creative-technology/projects/entertainment-carousel";
+import type { DemoProps } from "@/components/creative-technology/demos/types";
+import type { Media } from "@/lib/creative-technology/media";
+import { Withheld, image } from "@/components/creative-technology/ui/media";
+import { CarouselMatrix, type Axis } from "@/components/creative-technology/demos/entertainment-carousel.client";
+
+/** The content model calls the fan entertainment zone slide "zone". */
+const SLIDE_LABEL: Record<string, string> = { cover: "Cover", zone: "Fan zone" };
+
+/**
+ * Game day entertainment carousel. An architecture, shown through the
+ * carousels that were finished by hand around it: the same slide layouts in
+ * three themes. What is planned is said to be planned.
+ */
+export function EntertainmentCarouselDemo({ project, media }: DemoProps<CarouselDemo>) {
+  const { axes, finished, planned } = project.demo;
+
+  const slides: Record<string, Media> = {};
+  for (const entry of finished) {
+    const slide = image(media, entry.graphic);
+    if (slide) slides[`${entry.theme}/${entry.slide}`] = slide;
+  }
+
+  const themeAxis = axes.find((axis) => axis.key === "theme");
+  const layoutAxis = axes.find((axis) => axis.key === "layout");
+
+  const themes: Axis[] = (themeAxis?.options ?? []).map((option) => ({ key: option.key, label: option.label, note: option.note }));
+  // Only the layouts with a finished slide to show.
+  const layouts: Axis[] = Object.keys(SLIDE_LABEL)
+    .filter((key) => finished.some((entry) => entry.slide === key))
+    .map((key) => ({ key, label: SLIDE_LABEL[key], note: layoutAxis?.options.find((option) => option.key === key)?.note ?? "" }));
+
+  if (!Object.keys(slides).length) {
+    return (
+      <Withheld>
+        The finished carousels carry partner marks and event photography, so they are held back until they are cleared for
+        publication. In their place: a carousel is four slides. The architecture keeps three things apart so each can
+        change without the others: the layout of a slide, the theme it wears, and the content for that week.
+      </Withheld>
+    );
+  }
+
+  return (
+    <figure className="wide">
+      <CarouselMatrix
+        layouts={layouts}
+        themes={themes}
+        finished={slides}
+        status={`Each carousel was finished by a designer after a scripted pass. Still planned: ${planned.join(", ").toLowerCase()}.`}
+      />
+    </figure>
+  );
+}
