@@ -148,7 +148,7 @@ Held back entirely and not used on any page: the Week 14 ticketing suite (70 fil
 
 Recorded so no page implies more than exists.
 
-- **Public build.** Only three splash animations and two phone backgrounds are approved. Every other demonstration falls back as described above.
+- **Public build.** Approved for publication by the owner on 2026-11-16: every asset the seven demonstrations display, including the ten Week 12 Salute to Service suite files, which the owner authorised by name. Assets the page does not display stay pending, among them the Week 12 splash animation.
 - **Rivalries color.** The page is new. Its wording was drafted from the working files and should be read through before it is published. No correction accuracy is claimed.
 - **Ticketing.** The per-format "keeps and drops" lists were read off the delivered Week 8 files by eye. The six SMS backgrounds and the print ad are counted in the totals and not shown. The Spanish regions were measured by comparing the English and Spanish 16:9 files.
 - **New hire.** Only output rendered from synthetic test cards and fictional names is shown.

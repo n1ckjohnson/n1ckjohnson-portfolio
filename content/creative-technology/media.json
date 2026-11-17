@@ -7,7 +7,7 @@
     "alt": "Injury Report practice graphic in 9:16 with 4 player rows",
     "provenance": "production-output",
     "source": "Delivered practice report, 2026 Week 1, Thursday",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Shows real players' publicly reported injury information. Internal use until cleared."
   },
   {
@@ -18,7 +18,7 @@
     "alt": "Injury Report practice graphic in 16:9 with 4 player rows",
     "provenance": "production-output",
     "source": "Delivered practice report, 2026 Week 1, Thursday",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Shows real players' publicly reported injury information. Internal use until cleared."
   },
   {
@@ -95,7 +95,7 @@
     "alt": "Injury Report practice graphic in 9:16 with 9 player rows",
     "provenance": "production-output",
     "source": "Delivered practice report, 2026 Week 6, Wednesday",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Shows real players' publicly reported injury information. Internal use until cleared."
   },
   {
@@ -106,7 +106,7 @@
     "alt": "Injury Report practice graphic in 16:9 with 9 player rows",
     "provenance": "production-output",
     "source": "Delivered practice report, 2026 Week 6, Wednesday",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Shows real players' publicly reported injury information. Internal use until cleared."
   },
   {
@@ -139,7 +139,7 @@
     "alt": "Injury Report practice graphic in 9:16 with 11 player rows",
     "provenance": "production-output",
     "source": "Delivered practice report, 2026 Week 10, Thursday",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Shows real players' publicly reported injury information. Internal use until cleared."
   },
   {
@@ -150,7 +150,7 @@
     "alt": "Injury Report practice graphic in 16:9 with 11 player rows",
     "provenance": "production-output",
     "source": "Delivered practice report, 2026 Week 10, Thursday",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Shows real players' publicly reported injury information. Internal use until cleared."
   },
   {
@@ -172,7 +172,7 @@
     "alt": "Injury Report graphic in 9:16, Throwback visual variant",
     "provenance": "production-output",
     "source": "Delivered practice report, 2026 Week 3 (Throwback variant)",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Shows real players' publicly reported injury information. Internal use until cleared."
   },
   {
@@ -183,7 +183,7 @@
     "alt": "Injury Report graphic in 9:16, Rivalries visual variant",
     "provenance": "production-output",
     "source": "Delivered practice report, 2026 Week 8 (Rivalries variant)",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Shows real players' publicly reported injury information. Internal use until cleared."
   },
   {
@@ -238,7 +238,7 @@
     "alt": "Injury Report graphic in 16:9, Throwback visual variant",
     "provenance": "production-output",
     "source": "Delivered practice report, 2026 Week 3 (Throwback variant)",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Shows real players' publicly reported injury information. Internal use until cleared."
   },
   {
@@ -249,7 +249,7 @@
     "alt": "Injury Report graphic in 16:9, Rivalries visual variant",
     "provenance": "production-output",
     "source": "Delivered practice report, 2026 Week 8 (Rivalries variant)",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Shows real players' publicly reported injury information. Internal use until cleared."
   },
   {
@@ -293,7 +293,7 @@
     "alt": "Game Week header graphic, Week 1, home",
     "provenance": "production-output",
     "source": "Game Center Header export, 2026 Week 1, home",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -304,7 +304,7 @@
     "alt": "Game Week header graphic, Week 2, away",
     "provenance": "production-output",
     "source": "Game Center Header export, 2026 Week 2, away",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -326,7 +326,7 @@
     "alt": "Game Week header graphic, Week 5, London",
     "provenance": "production-output",
     "source": "Game Center Header export, 2026 Week 5, London",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -348,7 +348,7 @@
     "alt": "Game Week header graphic, Week 9, away (dark edition)",
     "provenance": "production-output",
     "source": "Game Center Header export, 2026 Week 9, away (dark edition)",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -370,7 +370,7 @@
     "alt": "Live Blog graphic, Week 1, home",
     "provenance": "production-output",
     "source": "Live Blog export, 2026 Week 1, home",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent marks."
   },
   {
@@ -425,7 +425,7 @@
     "alt": "",
     "provenance": "derived",
     "source": "Pixel difference across the standard-look Game Center Header exports (computed, not hand-drawn)",
-    "approval": "pending"
+    "approval": "approved"
   },
   {
     "id": "splash/pw2-car",
@@ -435,7 +435,7 @@
     "alt": "",
     "provenance": "production-output",
     "source": "Delivered app splash screen Lottie, 2026 PW2 vs CAR",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -446,7 +446,7 @@
     "alt": "Final frame of the PW2 vs CAR splash screen",
     "provenance": "production-output",
     "source": "Final frame of the delivered reference render",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -457,7 +457,7 @@
     "alt": "",
     "provenance": "production-output",
     "source": "Delivered app splash screen Lottie, 2026 PW3 vs TB",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -468,7 +468,7 @@
     "alt": "Final frame of the PW3 vs TB splash screen",
     "provenance": "production-output",
     "source": "Final frame of the delivered reference render",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -623,7 +623,7 @@
     "alt": "Final frame of the W1 vs CLE splash screen",
     "provenance": "production-output",
     "source": "Final frame of the delivered reference render",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -646,7 +646,7 @@
     "alt": "Final frame of the W2 at DEN splash screen",
     "provenance": "production-output",
     "source": "Final frame of the delivered reference render",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -657,7 +657,7 @@
     "alt": "",
     "provenance": "production-output",
     "source": "Delivered app splash screen Lottie, 2026 W4 at CIN",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -668,7 +668,7 @@
     "alt": "Final frame of the W4 at CIN splash screen",
     "provenance": "production-output",
     "source": "Final frame of the delivered reference render",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -679,7 +679,7 @@
     "alt": "",
     "provenance": "production-output",
     "source": "Delivered app splash screen Lottie, 2026 W5 vs PHI",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -690,7 +690,7 @@
     "alt": "Final frame of the W5 vs PHI splash screen",
     "provenance": "production-output",
     "source": "Final frame of the delivered reference render",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -701,7 +701,7 @@
     "alt": "",
     "provenance": "production-output",
     "source": "Delivered app splash screen Lottie, 2026 W6 vs HOU",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -712,7 +712,7 @@
     "alt": "Final frame of the W6 vs HOU splash screen",
     "provenance": "production-output",
     "source": "Final frame of the delivered reference render",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -735,7 +735,7 @@
     "alt": "Final frame of the W8 vs IND splash screen",
     "provenance": "production-output",
     "source": "Final frame of the delivered reference render",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -746,7 +746,7 @@
     "alt": "",
     "provenance": "production-output",
     "source": "Delivered app splash screen Lottie, 2026 W9 at BAL (NIGHT A edition)",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -757,7 +757,7 @@
     "alt": "Final frame of the W9 at BAL splash screen",
     "provenance": "production-output",
     "source": "Final frame of the delivered reference render",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
   {
@@ -824,7 +824,7 @@
     "alt": "",
     "provenance": "production-output",
     "source": "Delivered phone background (dark edition), web-sized",
-    "approval": "pending"
+    "approval": "approved"
   },
   {
     "id": "splash/background-rivalries",
@@ -1616,7 +1616,7 @@
     "alt": "Player birthday graphic for Brian Thomas Jr., bottom-title layout",
     "provenance": "production-output",
     "source": "Birthday production package, fall 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, signature and a partner mark."
   },
   {
@@ -1627,7 +1627,7 @@
     "alt": "Player birthday graphic for Zach Durfee, top-title layout",
     "provenance": "production-output",
     "source": "Birthday production package, fall 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, signature and a partner mark."
   },
   {
@@ -1638,7 +1638,7 @@
     "alt": "Player birthday graphic for Trevor Lawrence, side-title layout",
     "provenance": "production-output",
     "source": "Birthday production package, fall 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, signature and a partner mark."
   },
   {
@@ -1649,7 +1649,7 @@
     "alt": "Player birthday graphic for Matt Dickerson, top-title layout",
     "provenance": "production-output",
     "source": "Birthday production package, fall 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, signature and a partner mark."
   },
   {
@@ -1660,7 +1660,7 @@
     "alt": "Player birthday graphic for Jakobi Meyers, side-title layout",
     "provenance": "production-output",
     "source": "Birthday production package, fall 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, signature and a partner mark."
   },
   {
@@ -1671,7 +1671,7 @@
     "alt": "Player birthday graphic for Christian Braswell, side-title layout",
     "provenance": "production-output",
     "source": "Birthday production package, September 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, signature and a partner mark."
   },
   {
@@ -1682,7 +1682,7 @@
     "alt": "Player birthday graphic for Chris Rodriguez Jr., bottom-title layout",
     "provenance": "production-output",
     "source": "Birthday production package, September 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, signature and a partner mark."
   },
   {
@@ -1693,7 +1693,7 @@
     "alt": "Player birthday graphic for Ross Matiscik, top-title layout",
     "provenance": "production-output",
     "source": "Birthday production package, September 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, signature and a partner mark."
   },
   {
@@ -1704,7 +1704,7 @@
     "alt": "Player birthday graphic for Nate Boerkircher, bottom-title layout",
     "provenance": "production-output",
     "source": "Birthday production package, September 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, signature and a partner mark."
   },
   {
@@ -1715,7 +1715,7 @@
     "alt": "Player birthday graphic for Wesley Williams, top-title layout",
     "provenance": "production-output",
     "source": "Birthday production package, September 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, signature and a partner mark."
   },
   {
@@ -1822,7 +1822,7 @@
     "alt": "Score graphic in 3:4: first quarter, Browns 0, Jaguars 14",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 1 vs Cleveland",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark."
   },
   {
@@ -1833,7 +1833,7 @@
     "alt": "Score graphic in 9:16: first quarter, Browns 0, Jaguars 14",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 1 vs Cleveland",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark."
   },
   {
@@ -1844,7 +1844,7 @@
     "alt": "Score graphic in 3:4: halftime, Browns 0, Jaguars 24, partner tab shown",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 1 vs Cleveland",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark, partner mark."
   },
   {
@@ -1855,7 +1855,7 @@
     "alt": "Score graphic in 9:16: halftime, Browns 0, Jaguars 24, partner tab shown",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 1 vs Cleveland",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark, partner mark."
   },
   {
@@ -1866,7 +1866,7 @@
     "alt": "Score graphic in 3:4: third quarter, Browns 3, Jaguars 34",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 1 vs Cleveland",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark."
   },
   {
@@ -1877,7 +1877,7 @@
     "alt": "Score graphic in 9:16: third quarter, Browns 3, Jaguars 34",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 1 vs Cleveland",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark."
   },
   {
@@ -1888,7 +1888,7 @@
     "alt": "Score graphic in 3:4: Jags Win, Browns 10, Jaguars 34",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 1 vs Cleveland",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark."
   },
   {
@@ -1899,7 +1899,7 @@
     "alt": "Score graphic in 9:16: Jags Win, Browns 10, Jaguars 34",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 1 vs Cleveland",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark."
   },
   {
@@ -2053,7 +2053,7 @@
     "alt": "Jags Win postgame email, Week 8, Rivalries theme: slice 1 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 1 of 9 of the finished Jags Win email, 2026 Week 8",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2064,7 +2064,7 @@
     "alt": "Jags Win postgame email, Week 8, Rivalries theme: slice 2 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 2 of 9 of the finished Jags Win email, 2026 Week 8",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2075,7 +2075,7 @@
     "alt": "Jags Win postgame email, Week 8, Rivalries theme: slice 3 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 3 of 9 of the finished Jags Win email, 2026 Week 8",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2086,7 +2086,7 @@
     "alt": "Jags Win postgame email, Week 8, Rivalries theme: slice 4 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 4 of 9 of the finished Jags Win email, 2026 Week 8",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2097,7 +2097,7 @@
     "alt": "Jags Win postgame email, Week 8, Rivalries theme: slice 5 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 5 of 9 of the finished Jags Win email, 2026 Week 8",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2108,7 +2108,7 @@
     "alt": "Jags Win postgame email, Week 8, Rivalries theme: slice 6 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 6 of 9 of the finished Jags Win email, 2026 Week 8",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2119,7 +2119,7 @@
     "alt": "Jags Win postgame email, Week 8, Rivalries theme: slice 7 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 7 of 9 of the finished Jags Win email, 2026 Week 8",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2130,7 +2130,7 @@
     "alt": "Jags Win postgame email, Week 8, Rivalries theme: slice 8 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 8 of 9 of the finished Jags Win email, 2026 Week 8",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2141,7 +2141,7 @@
     "alt": "Jags Win postgame email, Week 8, Rivalries theme: slice 9 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 9 of 9 of the finished Jags Win email, 2026 Week 8",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2152,7 +2152,7 @@
     "alt": "Jags Win postgame email, Week 9, night theme: slice 1 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 1 of 9 of the finished Jags Win email, 2026 Week 9",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2163,7 +2163,7 @@
     "alt": "Jags Win postgame email, Week 9, night theme: slice 2 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 2 of 9 of the finished Jags Win email, 2026 Week 9",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2174,7 +2174,7 @@
     "alt": "Jags Win postgame email, Week 9, night theme: slice 3 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 3 of 9 of the finished Jags Win email, 2026 Week 9",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2185,7 +2185,7 @@
     "alt": "Jags Win postgame email, Week 9, night theme: slice 4 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 4 of 9 of the finished Jags Win email, 2026 Week 9",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2196,7 +2196,7 @@
     "alt": "Jags Win postgame email, Week 9, night theme: slice 5 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 5 of 9 of the finished Jags Win email, 2026 Week 9",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2207,7 +2207,7 @@
     "alt": "Jags Win postgame email, Week 9, night theme: slice 6 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 6 of 9 of the finished Jags Win email, 2026 Week 9",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2218,7 +2218,7 @@
     "alt": "Jags Win postgame email, Week 9, night theme: slice 7 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 7 of 9 of the finished Jags Win email, 2026 Week 9",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2229,7 +2229,7 @@
     "alt": "Jags Win postgame email, Week 9, night theme: slice 8 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 8 of 9 of the finished Jags Win email, 2026 Week 9",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2240,7 +2240,7 @@
     "alt": "Jags Win postgame email, Week 9, night theme: slice 9 of 9",
     "provenance": "production-output",
     "source": "Save for Web slice 9 of 9 of the finished Jags Win email, 2026 Week 9",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2251,7 +2251,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 1 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 1 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2262,7 +2262,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 2 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 2 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2273,7 +2273,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 3 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 3 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2284,7 +2284,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 4 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 4 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2295,7 +2295,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 5 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 5 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2306,7 +2306,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 6 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 6 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2317,7 +2317,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 7 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 7 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2328,7 +2328,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 8 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 8 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2339,7 +2339,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 9 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 9 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2350,7 +2350,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 10 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 10 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2361,7 +2361,7 @@
     "alt": "Jags Win postgame email, Week 3, Throwback theme: slice 11 of 11",
     "provenance": "production-output",
     "source": "Save for Web slice 11 of 11 of the finished Jags Win email, 2026 Week 3",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent and partner marks."
   },
   {
@@ -2482,7 +2482,7 @@
     "alt": "Week 8 ticketing suite: social placement, 1920 by 1080 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2493,7 +2493,7 @@
     "alt": "Week 8 ticketing suite: social story placement, 1080 by 1920 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2504,7 +2504,7 @@
     "alt": "Week 8 ticketing suite: social square placement, 1080 by 1080 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2537,7 +2537,7 @@
     "alt": "Week 8 ticketing suite: social placement in Spanish, 1920 by 1080 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2548,7 +2548,7 @@
     "alt": "Week 8 ticketing suite: skyscraper display ad, 160 by 600 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2570,7 +2570,7 @@
     "alt": "Week 8 ticketing suite: medium rectangle display ad, 300 by 250 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2581,7 +2581,7 @@
     "alt": "Week 8 ticketing suite: billboard display ad, 970 by 250 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2592,7 +2592,7 @@
     "alt": "Week 8 ticketing suite: wide ticketing banner, 2400 by 350 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2603,7 +2603,7 @@
     "alt": "Week 8 ticketing suite: leaderboard display ad, 728 by 90 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2625,7 +2625,7 @@
     "alt": "Week 8 ticketing suite: mobile banner display ad, 320 by 50 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2636,7 +2636,7 @@
     "alt": "Week 8 ticketing suite: tV endcard, 1920 by 1080 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 8, 1 November 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -2680,7 +2680,7 @@
     "alt": "Original studio portrait in the Rivalries uniform, helmet on, ball in hand",
     "provenance": "source-input",
     "source": "Studio photography, as shot, before color correction",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography and player likeness."
   },
   {
@@ -2691,7 +2691,7 @@
     "alt": "Color-corrected studio portrait in the Rivalries uniform, helmet on, ball in hand",
     "provenance": "production-output",
     "source": "Export of the working Photoshop file after the masked correction",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography and player likeness."
   },
   {
@@ -2966,7 +2966,7 @@
     "alt": "Injury Report 9:16 with its player rows lifted out",
     "provenance": "production-output",
     "source": "Delivered report, rows removed by extract-psd-layers.py",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Derived from a delivered report. Internal use until cleared."
   },
   {
@@ -2977,7 +2977,7 @@
     "alt": "Injury Report 16:9 with its player rows lifted out",
     "provenance": "production-output",
     "source": "Delivered report, rows removed by extract-psd-layers.py",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Derived from a delivered report. Internal use until cleared."
   },
   {
@@ -3010,7 +3010,7 @@
     "alt": "Injury Report 9:16 with its player rows lifted out",
     "provenance": "production-output",
     "source": "Delivered report, rows removed by extract-psd-layers.py",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Derived from a delivered report. Internal use until cleared."
   },
   {
@@ -3021,7 +3021,7 @@
     "alt": "Injury Report 16:9 with its player rows lifted out",
     "provenance": "production-output",
     "source": "Delivered report, rows removed by extract-psd-layers.py",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Derived from a delivered report. Internal use until cleared."
   },
   {
@@ -3032,7 +3032,7 @@
     "alt": "Trevor Lawrence birthday graphic, background and jaguar outline layer",
     "provenance": "production-output",
     "source": "Layer group rendered from the production PSD",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness and signature. Internal use until cleared."
   },
   {
@@ -3043,7 +3043,7 @@
     "alt": "Trevor Lawrence birthday graphic, signature layer",
     "provenance": "production-output",
     "source": "Layer group rendered from the production PSD",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness and signature. Internal use until cleared."
   },
   {
@@ -3065,7 +3065,7 @@
     "alt": "Trevor Lawrence birthday graphic, Happy Birthday title band layer",
     "provenance": "production-output",
     "source": "Layer group rendered from the production PSD",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness and signature. Internal use until cleared."
   },
   {
@@ -3076,7 +3076,7 @@
     "alt": "Trevor Lawrence birthday graphic, position, number and name plate layer",
     "provenance": "production-output",
     "source": "Layer group rendered from the production PSD",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness and signature. Internal use until cleared."
   },
   {
@@ -3087,7 +3087,7 @@
     "alt": "Trevor Lawrence birthday graphic, team mark, hashtag and partner mark layer",
     "provenance": "production-output",
     "source": "Layer group rendered from the production PSD",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness and signature. Internal use until cleared."
   },
   {
@@ -3098,7 +3098,7 @@
     "alt": "Week 8 ticketing suite: social story in Spanish, 1080 by 1920 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a played game. Opponent, league and partner marks and a player likeness. Not yet cleared."
   },
   {
@@ -3109,7 +3109,7 @@
     "alt": "Week 8 ticketing suite: social square in Spanish, 1080 by 1080 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a played game. Opponent, league and partner marks and a player likeness. Not yet cleared."
   },
   {
@@ -3120,7 +3120,7 @@
     "alt": "Week 8 ticketing suite: social portrait in Spanish, 1080 by 1440 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a played game. Opponent, league and partner marks and a player likeness. Not yet cleared."
   },
   {
@@ -3131,7 +3131,7 @@
     "alt": "Week 8 ticketing suite: TV endcard in Spanish, 1920 by 1080 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 8 single-game ticketing suite (Rivalries), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a played game. Opponent, league and partner marks and a player likeness. Not yet cleared."
   },
   {
@@ -3142,7 +3142,7 @@
     "alt": "Score graphic in 3:4: Jags Win, Throwback edition, Patriots 6, Jaguars 35",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 3 vs New England",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark."
   },
   {
@@ -3153,7 +3153,7 @@
     "alt": "Score graphic in 3:4: Jags Win, Rivalries edition, Colts 7, Jaguars 42",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 8 vs Indianapolis",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark."
   },
   {
@@ -3164,7 +3164,7 @@
     "alt": "Score graphic in 3:4: Jags Win, TNF edition, Jaguars 33, Ravens 10",
     "provenance": "production-output",
     "source": "Delivered score graphic, 2026 Week 9 at Baltimore",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Team photography, player likeness, opponent mark."
   },
   {
@@ -3252,7 +3252,7 @@
     "alt": "Week 3 Throwback ticketing suite: social landscape, 1920 by 1080 pixels",
     "provenance": "production-output",
     "source": "Delivered Week 3 single-game ticketing suite (Patriots at Jaguars, Throwback), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 3, 27 September 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -3263,7 +3263,7 @@
     "alt": "Week 3 Throwback ticketing suite: social story, 1080 by 1920 pixels",
     "provenance": "production-output",
     "source": "Delivered Week 3 single-game ticketing suite (Patriots at Jaguars, Throwback), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 3, 27 September 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -3274,7 +3274,7 @@
     "alt": "Week 3 Throwback ticketing suite: social square, 1080 by 1080 pixels",
     "provenance": "production-output",
     "source": "Delivered Week 3 single-game ticketing suite (Patriots at Jaguars, Throwback), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 3, 27 September 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -3285,7 +3285,7 @@
     "alt": "Week 3 Throwback ticketing suite: skyscraper display ad, 160 by 600 pixels",
     "provenance": "production-output",
     "source": "Delivered Week 3 single-game ticketing suite (Patriots at Jaguars, Throwback), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 3, 27 September 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -3296,7 +3296,7 @@
     "alt": "Week 3 Throwback ticketing suite: medium rectangle display ad, 300 by 250 pixels",
     "provenance": "production-output",
     "source": "Delivered Week 3 single-game ticketing suite (Patriots at Jaguars, Throwback), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 3, 27 September 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -3307,7 +3307,7 @@
     "alt": "Week 3 Throwback ticketing suite: TV endcard, 1920 by 1080 pixels",
     "provenance": "production-output",
     "source": "Delivered Week 3 single-game ticketing suite (Patriots at Jaguars, Throwback), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 3, 27 September 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -3318,7 +3318,7 @@
     "alt": "Week 3 Throwback ticketing suite: billboard display ad, 970 by 250 pixels",
     "provenance": "production-output",
     "source": "Delivered Week 3 single-game ticketing suite (Patriots at Jaguars, Throwback), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 3, 27 September 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -3329,7 +3329,7 @@
     "alt": "Week 3 Throwback ticketing suite: wide banner, 2400 by 350 pixels",
     "provenance": "production-output",
     "source": "Delivered Week 3 single-game ticketing suite (Patriots at Jaguars, Throwback), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 3, 27 September 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -3340,7 +3340,7 @@
     "alt": "Week 3 Throwback ticketing suite: leaderboard display ad, 728 by 90 pixels",
     "provenance": "production-output",
     "source": "Delivered Week 3 single-game ticketing suite (Patriots at Jaguars, Throwback), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 3, 27 September 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -3351,7 +3351,7 @@
     "alt": "Week 3 Throwback ticketing suite: mobile banner display ad, 320 by 50 pixels",
     "provenance": "production-output",
     "source": "Delivered Week 3 single-game ticketing suite (Patriots at Jaguars, Throwback), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game that has been played (Week 3, 27 September 2026). Carries opponent, league and partner marks and a player likeness. Not yet cleared for this site."
   },
   {
@@ -3362,7 +3362,7 @@
     "alt": "Week 12 Salute to Service ticketing suite: social landscape, 1920 by 1080 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 12 single-game ticketing suite (Titans at Jaguars, Salute to Service), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game NOT yet played (Week 12, 29 November 2026). Internal preview only at the owner's request; must stay pending until the game is played and the owner clears it."
   },
   {
@@ -3373,7 +3373,7 @@
     "alt": "Week 12 Salute to Service ticketing suite: social story, 1080 by 1920 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 12 single-game ticketing suite (Titans at Jaguars, Salute to Service), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game NOT yet played (Week 12, 29 November 2026). Internal preview only at the owner's request; must stay pending until the game is played and the owner clears it."
   },
   {
@@ -3384,7 +3384,7 @@
     "alt": "Week 12 Salute to Service ticketing suite: social square, 1080 by 1080 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 12 single-game ticketing suite (Titans at Jaguars, Salute to Service), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game NOT yet played (Week 12, 29 November 2026). Internal preview only at the owner's request; must stay pending until the game is played and the owner clears it."
   },
   {
@@ -3395,7 +3395,7 @@
     "alt": "Week 12 Salute to Service ticketing suite: skyscraper display ad, 160 by 600 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 12 single-game ticketing suite (Titans at Jaguars, Salute to Service), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game NOT yet played (Week 12, 29 November 2026). Internal preview only at the owner's request; must stay pending until the game is played and the owner clears it."
   },
   {
@@ -3406,7 +3406,7 @@
     "alt": "Week 12 Salute to Service ticketing suite: medium rectangle display ad, 300 by 250 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 12 single-game ticketing suite (Titans at Jaguars, Salute to Service), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game NOT yet played (Week 12, 29 November 2026). Internal preview only at the owner's request; must stay pending until the game is played and the owner clears it."
   },
   {
@@ -3417,7 +3417,7 @@
     "alt": "Week 12 Salute to Service ticketing suite: TV endcard, 1920 by 1080 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 12 single-game ticketing suite (Titans at Jaguars, Salute to Service), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game NOT yet played (Week 12, 29 November 2026). Internal preview only at the owner's request; must stay pending until the game is played and the owner clears it."
   },
   {
@@ -3428,7 +3428,7 @@
     "alt": "Week 12 Salute to Service ticketing suite: billboard display ad, 970 by 250 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 12 single-game ticketing suite (Titans at Jaguars, Salute to Service), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game NOT yet played (Week 12, 29 November 2026). Internal preview only at the owner's request; must stay pending until the game is played and the owner clears it."
   },
   {
@@ -3439,7 +3439,7 @@
     "alt": "Week 12 Salute to Service ticketing suite: wide banner, 2400 by 350 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 12 single-game ticketing suite (Titans at Jaguars, Salute to Service), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game NOT yet played (Week 12, 29 November 2026). Internal preview only at the owner's request; must stay pending until the game is played and the owner clears it."
   },
   {
@@ -3450,7 +3450,7 @@
     "alt": "Week 12 Salute to Service ticketing suite: leaderboard display ad, 728 by 90 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 12 single-game ticketing suite (Titans at Jaguars, Salute to Service), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game NOT yet played (Week 12, 29 November 2026). Internal preview only at the owner's request; must stay pending until the game is played and the owner clears it."
   },
   {
@@ -3461,7 +3461,7 @@
     "alt": "Week 12 Salute to Service ticketing suite: mobile banner display ad, 320 by 50 pixels",
     "provenance": "production-output",
     "source": "Final shipping package, Week 12 single-game ticketing suite (Titans at Jaguars, Salute to Service), 2026",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Campaign creative for a game NOT yet played (Week 12, 29 November 2026). Internal preview only at the owner's request; must stay pending until the game is played and the owner clears it."
   },
   {
@@ -3483,7 +3483,7 @@
     "alt": "Week 1, Browns at Jaguars: story highlight cover",
     "provenance": "production-output",
     "source": "Game Week final delivery, 2026 Week 1, Browns at Jaguars",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Opponent marks. Internal use until cleared."
   },
   {
@@ -3494,7 +3494,7 @@
     "alt": "Week 1, Browns at Jaguars: highlight icon",
     "provenance": "production-output",
     "source": "Game Week, 2026 Week 1, Browns at Jaguars: the corrected highlight icon export, which replaced the first automated delivery file",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Opponent marks. Internal use until cleared."
   },
   {
@@ -3527,7 +3527,7 @@
     "alt": "Week 1, Browns at Jaguars: social Game Week header",
     "provenance": "production-output",
     "source": "Game Week exports, 2026 Week 1, Browns at Jaguars: re-exported after the designer's manual pass",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, opponent and partner marks. Internal use until cleared."
   },
   {
@@ -3538,7 +3538,7 @@
     "alt": "Week 1, Browns at Jaguars: ticket promotion, 16:9",
     "provenance": "production-output",
     "source": "Game Week exports, 2026 Week 1, Browns at Jaguars: re-exported after the designer's manual pass",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, opponent and partner marks. Internal use until cleared."
   },
   {
@@ -3549,7 +3549,7 @@
     "alt": "Week 1, Browns at Jaguars: Where to Watch, 16:9",
     "provenance": "production-output",
     "source": "Game Week exports, 2026 Week 1, Browns at Jaguars: re-exported after the designer's manual pass",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, opponent and partner marks. Internal use until cleared."
   },
   {
@@ -3560,7 +3560,7 @@
     "alt": "Week 1, Browns at Jaguars: Where to Watch, 9:16",
     "provenance": "production-output",
     "source": "Game Week exports, 2026 Week 1, Browns at Jaguars: re-exported after the designer's manual pass",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, opponent and partner marks. Internal use until cleared."
   },
   {
@@ -3571,7 +3571,7 @@
     "alt": "Week 1, Browns at Jaguars: Where to Watch, 3:4",
     "provenance": "production-output",
     "source": "Game Week exports, 2026 Week 1, Browns at Jaguars: re-exported after the designer's manual pass",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness, opponent and partner marks. Internal use until cleared."
   },
   {
@@ -3582,7 +3582,7 @@
     "alt": "Injury Report 9:16 with its player rows lifted out",
     "provenance": "production-output",
     "source": "Delivered report, rows removed by extract-psd-layers.py",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Derived from a delivered report. Internal use until cleared."
   },
   {
@@ -3593,7 +3593,7 @@
     "alt": "Injury Report 16:9 with its player rows lifted out",
     "provenance": "production-output",
     "source": "Delivered report, rows removed by extract-psd-layers.py",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Derived from a delivered report. Internal use until cleared."
   },
   {
@@ -3604,7 +3604,7 @@
     "alt": "Trevor Lawrence birthday graphic, player photo with its lighting and shadow layer",
     "provenance": "production-output",
     "source": "Layer group rendered from the production PSD; the backdrop's hard left edge feathered for the layer-by-layer presentation (soften_photo_edge in extract-psd-layers.py)",
-    "approval": "pending",
+    "approval": "approved",
     "note": "Player likeness. Presentation copy of a PSD layer; the delivered export is unchanged. Internal use until cleared."
   }
 ]
