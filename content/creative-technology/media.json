@@ -292,7 +292,7 @@
     "project": "game-week",
     "alt": "Game Week header graphic, Week 1, home",
     "provenance": "production-output",
-    "source": "Game Center Header export, 2026 Week 1, home",
+    "source": "Game Center Header export, 2026 Week 1, home; its date | kickoff separator corrected to the template weight (scripts/creative-technology/correct-gch-separator.mjs)",
     "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },
@@ -303,7 +303,7 @@
     "project": "game-week",
     "alt": "Game Week header graphic, Week 2, away",
     "provenance": "production-output",
-    "source": "Game Center Header export, 2026 Week 2, away",
+    "source": "Game Center Header export, 2026 Week 2, away; its date | kickoff separator corrected to the template weight (scripts/creative-technology/correct-gch-separator.mjs)",
     "approval": "approved",
     "note": "Carries opponent and presenting-partner marks."
   },

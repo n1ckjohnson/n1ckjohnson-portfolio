@@ -102,6 +102,7 @@ The builder reads `media.json` and a private source map, `media-internal/sources
 Two exceptions read PSDs, both with `psd-tools` (`pip install psd-tools`):
 
 - `extract-color-masks.py` reads the layer-mask channels of named adjustment groups in the Rivalries working PSD and writes small alpha masks.
+- `correct-gch-separator.mjs` writes corrected copies of the Week 1 and Week 2 Game Center headers, whose date | kickoff separator was exported at twice the template weight. It replaces that bar with the Week 5 header's background and bar (same template, same rows), changes nothing else, and the source map points the builder at the copies. Run it before the builder.
 - `extract-psd-layers.py` renders the layer groups of one birthday PSD (Trevor Lawrence, Side layout) on transparent canvases, and finds every row in three delivered Injury Reports: it writes each report with its rows lifted out, and the row boxes to `content/creative-technology/data/injury-rows.json`. Its private paths are in `media-internal/psd_sources.local.json`. Outputs go to `media-internal/derived/`, and the source map points the builder at them.
 
 ### Checking a public build is clean
